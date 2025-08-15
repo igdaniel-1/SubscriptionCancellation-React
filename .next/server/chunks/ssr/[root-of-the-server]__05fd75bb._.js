@@ -56,20 +56,30 @@ body, children })=>{
             value: "Sorry to see you go"
         }
     ];
-    let title_count = 0;
-    const [title, setTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(allTitles[0].value);
+    //    let title_count = 0;
     // temp variable to hold onto title update testing value
-    const [inputValue, setInputValue] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    //    const [titleCounter, setInputValue] = useState("");
+    const [titleCounter, setTitleCounter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    //    const [newTitleCount, setNewTitleCount] = useState(0);
+    //   const handleContinueClick = (e) => {
+    //     e.preventDefault();
+    //     if (titleCounter.trim()) {
+    //         setTitle(titleCounter.trim());
+    //         setInputValue(""); // Clear input after submission
+    //     }
+    //     console.log("new title:",title);
+    //     console.log(allTitles, "title here??", ", count:", title_count);
+    //     // setTitle(allTitles[title_count+1].value);
+    //     // console.log("count:", allTitles[title_count+1].value);
+    //   };
     const handleContinueClick = (e)=>{
         e.preventDefault();
-        if (inputValue.trim()) {
-            setTitle(inputValue.trim());
-            setInputValue(""); // Clear input after submission
-        }
-        console.log("new title:", title);
-        console.log(allTitles, "title here??", ", count:", title_count);
-    // setTitle(allTitles[title_count+1].value);
-    // console.log("count:", allTitles[title_count+1].value);
+        console.log("current title: ", titleCounter);
+        let currentTitleCount = titleCounter;
+        currentTitleCount++;
+        setTitleCounter(currentTitleCount);
+        console.log("updated title count: ", titleCounter);
+    // setNewTitleCount(0);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50",
@@ -79,87 +89,52 @@ body, children })=>{
             // style={{ backgroundColor }}
             onClick: handleModalClick,
             children: [
-                allTitles[title_count] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                allTitles[titleCounter] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                     className: "inner-modal-text",
-                    children: allTitles[title_count].name
+                    children: allTitles[titleCounter].name
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 71,
-                    columnNumber: 36
+                    lineNumber: 84,
+                    columnNumber: 37
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "inner-modal-text",
-                    children: allTitles[title_count].value
+                    children: allTitles[titleCounter].value
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 72,
+                    lineNumber: 85,
                     columnNumber: 9
                 }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                    onSubmit: handleContinueClick,
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    onClick: handleContinueClick,
+                    className: "modal-button-text",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                            className: "block text-sm font-medium text-gray-700 mb-1",
-                            children: title
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/modal.tsx",
-                            lineNumber: 75,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "text",
-                            value: inputValue,
-                            onChange: (e)=>setInputValue(e.target.value),
-                            className: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500",
-                            placeholder: "Enter new title..."
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/modal.tsx",
-                            lineNumber: 78,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mt-6 flex justify-end gap-2",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    type: "button",
-                                    onClick: onClose,
-                                    className: "px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400",
-                                    children: "Close"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/modal.tsx",
-                                    lineNumber: 87,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    type: "submit",
-                                    className: "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700",
-                                    children: "Submit"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/modal.tsx",
-                                    lineNumber: 94,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/app/modal.tsx",
-                            lineNumber: 86,
-                            columnNumber: 11
-                        }, this)
+                        "Continue, ",
+                        titleCounter
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 74,
-                    columnNumber: 9
+                    lineNumber: 89,
+                    columnNumber: 13
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                    onClick: onClose,
+                    className: "modal-button-text",
+                    children: "Close"
+                }, void 0, false, {
+                    fileName: "[project]/src/app/modal.tsx",
+                    lineNumber: 96,
+                    columnNumber: 13
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 66,
+            lineNumber: 79,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/modal.tsx",
-        lineNumber: 62,
+        lineNumber: 75,
         columnNumber: 5
     }, this);
 };

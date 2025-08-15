@@ -39,22 +39,35 @@ const Modal: React.FC<ModalProps> = ({
     { name: "reason", value: "Reason for cancelling" },
     { name: "sorry", value: "Sorry to see you go" }
    ]
-   let title_count = 0;
-   const [title, setTitle] = useState(allTitles[0].value);
+//    let title_count = 0;
+   
 
    // temp variable to hold onto title update testing value
-   const [inputValue, setInputValue] = useState("");
+//    const [titleCounter, setInputValue] = useState("");
+   const [titleCounter, setTitleCounter] = useState(0);
+//    const [newTitleCount, setNewTitleCount] = useState(0);
 
-  const handleContinueClick = (e) => {
-    e.preventDefault();
-    if (inputValue.trim()) {
-        setTitle(inputValue.trim());
-        setInputValue(""); // Clear input after submission
-    }
-    console.log("new title:",title);
-    console.log(allTitles, "title here??", ", count:", title_count);
-    // setTitle(allTitles[title_count+1].value);
-    // console.log("count:", allTitles[title_count+1].value);
+//   const handleContinueClick = (e) => {
+//     e.preventDefault();
+//     if (titleCounter.trim()) {
+//         setTitle(titleCounter.trim());
+//         setInputValue(""); // Clear input after submission
+//     }
+//     console.log("new title:",title);
+//     console.log(allTitles, "title here??", ", count:", title_count);
+//     // setTitle(allTitles[title_count+1].value);
+//     // console.log("count:", allTitles[title_count+1].value);
+    
+//   };
+    const handleContinueClick = (e) => {
+        e.preventDefault();
+        console.log("current title: ", titleCounter);
+        let currentTitleCount = titleCounter;
+        currentTitleCount++;
+        setTitleCounter(currentTitleCount);
+        console.log("updated title count: ", titleCounter);
+        // setNewTitleCount(0);
+
     
   };
 
@@ -68,16 +81,33 @@ const Modal: React.FC<ModalProps> = ({
         // style={{ backgroundColor }}
         onClick={handleModalClick}
       >
-        {allTitles[title_count] && <h2 className="inner-modal-text">{allTitles[title_count].name}</h2>}
-        <div className="inner-modal-text">{allTitles[title_count].value}</div>
+        {allTitles[titleCounter] && <h2 className="inner-modal-text">{allTitles[titleCounter].name}</h2>}
+        <div className="inner-modal-text">{allTitles[titleCounter].value}</div>
         {/* start experimental inter modal updating here */}
-        <form onSubmit={handleContinueClick}>
+
+            {/* continue on modal pathway */}
+            <button    
+                onClick={handleContinueClick}
+                className="modal-button-text"
+                >
+                Continue, {titleCounter}
+            </button>
+            {/* close the modal */}
+            <button
+                onClick={onClose}
+                className="modal-button-text"
+                >
+                Close
+            </button>
+
+
+        {/* <form onSubmit={handleContinueClick}>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             {title}
           </label>
           <input
             type="text"
-            value={inputValue}
+            value={titleCounter}
             onChange={(e) => setInputValue(e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Enter new title..."
@@ -97,25 +127,14 @@ const Modal: React.FC<ModalProps> = ({
             >
               Submit
             </button>
+            
           </div>
-        </form>
+        </form> */}
 
 
         {/* end experimental section */}
-        {/* close the modal */}
-            {/* <button
-                onClick={onClose}
-                className="modal-button-text"
-                >
-                Close
-            </button> */}
-        {/* continue on modal pathway */}
-            {/* <button    
-                onClick={handleContinueClick}
-                className="modal-button-text"
-                >
-                Continue
-            </button> */}
+        
+        
       </div>
     </div>
   );
