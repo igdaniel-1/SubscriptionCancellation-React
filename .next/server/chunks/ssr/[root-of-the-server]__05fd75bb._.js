@@ -56,22 +56,7 @@ body, children })=>{
             value: "Sorry to see you go"
         }
     ];
-    //    let title_count = 0;
-    // temp variable to hold onto title update testing value
-    //    const [titleCounter, setInputValue] = useState("");
     const [titleCounter, setTitleCounter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
-    //    const [newTitleCount, setNewTitleCount] = useState(0);
-    //   const handleContinueClick = (e) => {
-    //     e.preventDefault();
-    //     if (titleCounter.trim()) {
-    //         setTitle(titleCounter.trim());
-    //         setInputValue(""); // Clear input after submission
-    //     }
-    //     console.log("new title:",title);
-    //     console.log(allTitles, "title here??", ", count:", title_count);
-    //     // setTitle(allTitles[title_count+1].value);
-    //     // console.log("count:", allTitles[title_count+1].value);
-    //   };
     const handleContinueClick = (e)=>{
         e.preventDefault();
         console.log("current title: ", titleCounter);
@@ -79,7 +64,6 @@ body, children })=>{
         currentTitleCount++;
         setTitleCounter(currentTitleCount);
         console.log("updated title count: ", titleCounter);
-    // setNewTitleCount(0);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50",
@@ -94,7 +78,7 @@ body, children })=>{
                     children: allTitles[titleCounter].name
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 84,
+                    lineNumber: 66,
                     columnNumber: 37
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -102,7 +86,7 @@ body, children })=>{
                     children: allTitles[titleCounter].value
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 85,
+                    lineNumber: 67,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -114,7 +98,7 @@ body, children })=>{
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 89,
+                    lineNumber: 70,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -123,18 +107,18 @@ body, children })=>{
                     children: "Close"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 96,
+                    lineNumber: 77,
                     columnNumber: 13
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 79,
+            lineNumber: 61,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/modal.tsx",
-        lineNumber: 75,
+        lineNumber: 57,
         columnNumber: 5
     }, this);
 };
