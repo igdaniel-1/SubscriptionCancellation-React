@@ -1,6 +1,7 @@
 'use client';
 
 import { useState,MouseEvent } from 'react';
+import Modal from "./modal";
 
 // Mock user data for UI display
 const mockUser = {
@@ -25,11 +26,12 @@ export default function ProfilePage() {
   const [loading] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
   // state var for delete account modal being open or closed
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  // const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   // after closing modal, set modal state to closed
-  const handleOverlayClick = () => {
-    setIsOpen(false);
-  };
+  // const handleOverlayClick = () => {
+  //   setIsModalOpen(false);
+  // };
   // modal closing handling
   const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation(); 
@@ -37,6 +39,27 @@ export default function ProfilePage() {
   // new vars for states within cancellation pathway
   const [hasJob, setHasJob] = useState<boolean>(false);
   const [gotJobThruMM, setGotJobThruMM] = useState<boolean>(false);
+  const [title, setTitle] = useState<String>("Hey Mate!!!");
+
+  // titles pathway for landed job
+  const allTitles = [
+    { name: "hey", value: "Hey Mate!" },
+    { name: "congrats", value: "Congrats!" },
+    { name: "help", value: "What can we do to help?" },
+    { name: "how", value: "How were you using?" },
+    { name: "reason", value: "Reason for cancelling" },
+    { name: "sorry", value: "Sorry to see you go" }
+  ]
+  // const jobAcquiredModalTitles = [
+  //   { name: "congrats", value: "Congrats!" },
+  //   { name: "help", value: "What can we do to help?" }
+  // ]
+  // // titles pathway for no job
+  // const noJobModalTitles = [
+  //   { name: "how", value: "How were you using?" },
+  //   { name: "reason", value: "Reason for cancelling" },
+  //   { name: "sorry", value: "Sorry to see you go" }
+  // ]
 
 
   
@@ -264,9 +287,10 @@ export default function ProfilePage() {
                     </button>
                     <button
                       onClick={() => {
-                        console.log('Cancel button clicked - no action');
+                        console.log('Cancel button clicked');
                         // set state for modal being currently open
-                        setIsOpen(true)
+                        // setIsOpen(true)
+                        setIsModalOpen(true)
                       }}
                       className="inline-flex items-center justify-center w-full px-4 py-3 bg-white border border-red-200 text-red-600 rounded-lg hover:bg-red-50 hover:border-red-300 transition-all duration-200 shadow-sm group"
                     >
@@ -276,40 +300,28 @@ export default function ProfilePage() {
                       <span className="text-sm font-medium">Cancel Migrate Mate</span>
                     </button>
                     {/* area for the cancellation modal */}
-                    {isOpen && (
-                      <div
-                        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-                        onClick={handleOverlayClick}
-                      >
-                        {/* modal content */}
-                        <div
-                          className="bg-white p-6 rounded-xl shadow-lg w-96"
-                          onClick={handleModalClick}
-                        >
-                          <h2 className="text-xl font-semibold mb-4">Hey Mate,</h2>
-                          <h2 className="text-xl font-semibold mb-4">Quick one before you go</h2>
-                          <h2 className="text-xl font-semibold mb-4">Have you found a job yet?</h2>
-                          <p className="mb-4">Whatever your answer, we just want to help you take the next step. With visa support, or by hearing how we can do better.</p>
-                          {/* yes job */}
-                          <button
-                            onClick={() => {
-                              console.log('yes job');
-                              // set state for yes have job
-                              setHasJob(true)
-                            }}
-                            className="inline-flex items-center justify-center w-full px-4 py-3 bg-white border border-red-200 text-red-600 rounded-lg hover:bg-red-50 hover:border-red-300 transition-all duration-200 shadow-sm group"
-                          >
-                          </button>
-                          {/* no job */}
-                          <button
-                            onClick={() => setIsOpen(false)}
-                            // className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
-                          >
-                            Close
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                    <Modal
+                      isOpen={isModalOpen}
+                      onClose={() => setIsModalOpen(false)}
+                      title="Hey Mate"
+                      // backgroundColor={bgColor}
+                    >
+                      <form className="space-y-2">
+                        {/* {colors.map((color) => (
+                          <label key={color.value} className="flex items-center gap-2">
+                            <input
+                              type="radio"
+                              name="color"
+                              value={color.value}
+                              checked={bgColor === color.value}
+                              onChange={(e) => setBgColor(e.target.value)}
+                            />
+                            {color.name}
+                          </label>
+                        ))} */}
+                      </form>
+                    </Modal>
+                    {/* end cancellation modal area */}
                   </div>
                 </div>
               </div>
