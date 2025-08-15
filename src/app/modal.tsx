@@ -65,6 +65,7 @@ const Modal: React.FC<ModalProps> = ({
     //    state vars to control which stages are jumped to/skipped over
     const [hasJob, setHasJob] = useState<boolean>(false);
     const [gotJobThruMM, setGotJobThruMM] = useState<boolean>(false);
+    const [hasImmigrationLawyer, setHasImmigrationLawyer] = useState<boolean>(false);
 
 
     const handleContinueClick = (e) => {
@@ -144,6 +145,51 @@ const Modal: React.FC<ModalProps> = ({
             </div>
         )
     }
+    // this is a helper to set the "has immigration lawyer" state
+    const ImmigrationLawyer: React.FC<any> = ({}) => {
+        return (
+            <div>
+                <h3>Is your company providing an immigration lawyer to help with your visa?</h3>
+                <button 
+                    onClick={function handleClick() {
+                        setHasImmigrationLawyer(true);
+                        console.log("immigration lawyer set to true");
+                      }}
+                    className="modal-button-text">
+                    Yes
+                </button>
+                <button 
+                    onClick={function handleClick() {
+                        setHasImmigrationLawyer(false);
+                        console.log("immigration lawyer set to false");
+                      }}
+                    className="modal-button-text">
+                    No
+                </button>
+            </div>
+        )
+    }
+    const ImmigrationLawyerFollowUp: React.FC<any> = ({}) => {
+        if (hasImmigrationLawyer){
+            console.log("has lawyer")
+            return (
+                <div>
+                    <h3>What visa will you be applying for?</h3>
+                    <Form></Form>
+                </div>
+                )
+        }else{
+            console.log("no lawyer")
+            return (
+                <div>
+                    <h3>We can connect you with one of our trusted partners.</h3>
+                    <h3>Which visa would you like to apply for?</h3>
+                    <Form></Form>
+                </div>
+            )
+        }
+        
+    }
 
 
 
@@ -154,14 +200,14 @@ const Modal: React.FC<ModalProps> = ({
         { name: "Congrats on the new role!", value: [<FoundThroughMM></FoundThroughMM>, <JobQuestions></JobQuestions>], key:1 },
         
         // job through MM
-        { name: "What's one thing you wish we could've helped you with?", value: [<Form></Form>, "Continue"], key:2 },
-        { name: "We helped you land the job, immigration lawyer?", value: ["Yes", "No"], key:3 },
-        { name: "We helped you land the job, YES immigration lawyer", value: ["input text field", "Continue"], key:4 },
-        { name: "We helped you land the job, NO immigration lawyer", value: ["input text field", "Continue"], key:5 },
+        { name: "What's one thing you wish we could've helped you with?", value: [<Form></Form>], key:2 },
+        { name: "We helped you land the job, immigration lawyer?", value: [<ImmigrationLawyer></ImmigrationLawyer>], key:3 },
+        { name: "We helped you land the job, now let’s help you secure your visa.", value: [<ImmigrationLawyerFollowUp></ImmigrationLawyerFollowUp>], key:4 },
+        // { name: "We helped you land the job, NO immigration lawyer", value: ["input text field", "Continue"], key:5 },
         { name: "All done!", value: ["Close/Continue"], key:6 },
         // job outside MM
         { name: "What's one thing you wish we could've helped you with?", value: [<Form></Form>, "Continue"], key:7 },
-        { name: "You landed the job, immigration lawyer?", value: ["Yes", "No"], key:8 },
+        { name: "You landed the job, immigration lawyer?", value: [<ImmigrationLawyer></ImmigrationLawyer>], key:8 },
         { name: "You landed the job, YES immigration lawyer", value: ["input text field", "Continue"], key:9 },
         { name: "You landed the job, NO immigration lawyer", value: ["input text field", "Continue"], key:10},
         { name: "Your cancellation is all sorted, mate, no more changes.", value: ["Close/Continue"], key:11 },
