@@ -33,23 +33,23 @@ export default function ProfilePage() {
   //   setIsModalOpen(false);
   // };
   // modal closing handling
-  const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation(); 
-  };
+  // const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
+  //   e.stopPropagation(); 
+  // };
   // new vars for states within cancellation pathway
   const [hasJob, setHasJob] = useState<boolean>(false);
   const [gotJobThruMM, setGotJobThruMM] = useState<boolean>(false);
   const [title, setTitle] = useState<String>("Hey Mate!!!");
 
   // titles pathway for landed job
-  const allTitles = [
-    { name: "hey", value: "Hey Mate!" },
-    { name: "congrats", value: "Congrats!" },
-    { name: "help", value: "What can we do to help?" },
-    { name: "how", value: "How were you using?" },
-    { name: "reason", value: "Reason for cancelling" },
-    { name: "sorry", value: "Sorry to see you go" }
-  ]
+  // const allTitles = [
+  //   { name: "hey", value: "Hey Mate!" },
+  //   { name: "congrats", value: "Congrats!" },
+  //   { name: "help", value: "What can we do to help?" },
+  //   { name: "how", value: "How were you using?" },
+  //   { name: "reason", value: "Reason for cancelling" },
+  //   { name: "sorry", value: "Sorry to see you go" }
+  // ]
   // const jobAcquiredModalTitles = [
   //   { name: "congrats", value: "Congrats!" },
   //   { name: "help", value: "What can we do to help?" }
@@ -303,10 +303,14 @@ export default function ProfilePage() {
                     <Modal
                       isOpen={isModalOpen}
                       onClose={() => setIsModalOpen(false)}
-                      title="Hey Mate"
+                      // title={allTitles[0].value}
+                      // body={allTitles[0].name}
+                      // children={allTitles[0].name}
                       // backgroundColor={bgColor}
                     >
                       <form className="space-y-2">
+                        
+                        {/* {body} */}
                         {/* {colors.map((color) => (
                           <label key={color.value} className="flex items-center gap-2">
                             <input

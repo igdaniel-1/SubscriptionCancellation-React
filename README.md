@@ -143,3 +143,5 @@ Running DB Setup
 
 Prepping Modal Path Options
 - I think there may be a small error with "Offer Declined + How you were using", the sub-header text asks why the user is cancelling but the interactive element only lets them select numerical quantities for jobs. I will remove the red text for clarity of objective as their reason is inputted on following page.
+- Implementation wise, I'm thinking of creating an array of all the path options, indexing them and hopping through them as the user progresses through the modal story path.
+- There will be a dynamic 'continue' button that moves the content of the modal forward to the appropriate stage of the story path.
