@@ -7,56 +7,65 @@ interface ModalProps {
   body?: string;
 //   children?: string;
   children?: React.ReactNode;
-//   backgroundColor?: string;
 }
 
+// reusable components
+const Form: React.FC<any> = ({}) => {
+    return (
+        <form>
+          <label>Label Text Here:
+            <input type="text" />
+          </label>
+        </form>
+      )
+}
+const JobQuestions: React.FC<any> = ({}) => {
+    return (
+        <div>
+            <h3>How many roles did you apply for through Migrate Mate?</h3>
+            <button className="modal-button-text">NUMBER INPUT BUTTON</button>
+            <h3>How many companies did you email directly?</h3>
+            <button className="modal-button-text">NUMBER INPUT BUTTON</button>
+            <h3>How many different companies did you interview with?</h3>
+            <button className="modal-button-text">NUMBER INPUT BUTTON</button>
+        </div>
+        
+    )
+}
+const DiscountOffer: React.FC<any> = ({}) => {
+    return (
+        <div>
+            <button className="discount-button-text">Get 50% off</button>
+        </div>
+    )
+}
+
+
+
 const Modal: React.FC<ModalProps> = ({
-  isOpen,
-  onClose,
-//   title,
-  body,
-  children,
-//   backgroundColor = "white",
-}) => {
-  if (!isOpen) return null;
+    isOpen,
+    onClose,
+    //   title,
+    body,
+    children,
+    //   backgroundColor = "white",
+    }) => {
+    if (!isOpen) return null;
 
-  const handleOverlayClick = () => {
-    onClose();
-  };
+    const handleOverlayClick = () => {
+        onClose();
+    };
 
-  const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-  };
+    const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+    };
+    //    iterates through all the story path titles
+    const [titleCounter, setTitleCounter] = useState(0);
 
+    //    state vars to control which stages are jumped to/skipped over
+    const [hasJob, setHasJob] = useState<boolean>(false);
+    const [gotJobThruMM, setGotJobThruMM] = useState<boolean>(false);
 
-
-   // titles pathway 
-   const allTitles = [
-    { name: "Hey Mate! Quick one before you go.", value: ["Yes", "No"] },
-    // found a job pathway
-    { name: "Congrats on the new role!", value: ["find thru MM", "PKGA", "Continue"] },
-    { name: "What's one thing you wish we could've helped you with?", value: ["input text field", "Continue"] },
-    // job through MM
-    { name: "We helped you land the job, immigration lawyer?", value: ["Yes", "No"] },
-    { name: "We helped you land the job, YES immigration lawyer", value: ["input text field", "Continue"] },
-    { name: "We helped you land the job, NO immigration lawyer", value: ["input text field", "Continue"] },
-    { name: "All done!", value: ["Close/Continue"] },
-    // job outside MM
-    { name: "You landed the job, immigration lawyer?", value: ["Yes", "No"] },
-    { name: "You landed the job, YES immigration lawyer", value: ["input text field", "Continue"] },
-    { name: "You landed the job, NO immigration lawyer", value: ["input text field", "Continue"] },
-    { name: "Your cancellation is all sorted, mate, no more changes.", value: ["Close/Continue"] },
-
-    // no job pathway
-    // here will be the optional DISCOUNT page
-    { name: "We built this to help you land the job, this makes it a little easier.", value: ["Accept and Continue", "Decline and Continue"] },
-    { name: "Help us understand how you were using Migrate Mate.", value: ["PKGA", "Continue"] },
-    { name: "What's the main reason for cancelling?", value: ["5 seperate reasons w radio buttons"] },
-    { name: "What's the main reason for cancelling?", value: ["input text field related to previous reason", "Continue"] },
-    { name: "Sorry to see you go", value: ["Close/Continue"] }
-   ]
-
-   const [titleCounter, setTitleCounter] = useState(0);
 
     const handleContinueClick = (e) => {
         e.preventDefault();
@@ -64,6 +73,9 @@ const Modal: React.FC<ModalProps> = ({
         let currentTitleCount = titleCounter;
         // here is where I will manage the state tree 
         // there need to be jumps in the iteration to progress the story path accurately
+        if (titleCounter==0){
+            console.log("title is at stage 0");
+        }
 
 
         currentTitleCount++;
@@ -72,6 +84,66 @@ const Modal: React.FC<ModalProps> = ({
 
     
   };
+    const ButtonList: React.FC<any> = ({}) => {
+        console.log(allTitles[titleCounter].value);
+        const listItems = allTitles[titleCounter].value.map(buttonValue =>
+            <li>{buttonValue}</li>
+        );
+        return (
+            <ul>{listItems}</ul>
+        )
+    }
+
+    // single use components
+    const FoundThroughMM: React.FC<any> = ({}) => {
+        return (
+            <div>
+                <button 
+                onClick={handleContinueClick}
+                className="modal-button-text">Yes</button>
+                <button className="modal-button-text">No</button>
+            </div>
+        )
+    }
+
+
+
+    // titles pathway 
+    const allTitles = [
+        { name: "Hey Mate! Quick one before you go.", value: ["Yes", "No"], key:0 },
+        // found a job pathway
+        { name: "Congrats on the new role!", value: [<FoundThroughMM></FoundThroughMM>, <JobQuestions></JobQuestions>, "Continue"], key:1 },
+        
+        // job through MM
+        { name: "What's one thing you wish we could've helped you with?", value: [<Form></Form>, "Continue"], key:2 },
+        { name: "We helped you land the job, immigration lawyer?", value: ["Yes", "No"], key:3 },
+        { name: "We helped you land the job, YES immigration lawyer", value: ["input text field", "Continue"], key:4 },
+        { name: "We helped you land the job, NO immigration lawyer", value: ["input text field", "Continue"], key:5 },
+        { name: "All done!", value: ["Close/Continue"], key:6 },
+        // job outside MM
+        { name: "What's one thing you wish we could've helped you with?", value: [<Form></Form>, "Continue"], key:7 },
+        { name: "You landed the job, immigration lawyer?", value: ["Yes", "No"], key:8 },
+        { name: "You landed the job, YES immigration lawyer", value: ["input text field", "Continue"], key:9 },
+        { name: "You landed the job, NO immigration lawyer", value: ["input text field", "Continue"], key:10},
+        { name: "Your cancellation is all sorted, mate, no more changes.", value: ["Close/Continue"], key:11 },
+
+        // no job pathway
+        // here will be the optional DISCOUNT page
+        { key:12, name: "We built this to help you land the job, this makes it a little easier.", value: ["Here's 50% off until you find a job.", "Decline and Continue", <DiscountOffer></DiscountOffer>] },
+        { key:13, name: "Help us understand how you were using Migrate Mate.", value: [<JobQuestions></JobQuestions>, <DiscountOffer></DiscountOffer>, "Continue"] },
+        { key:14, name: "What's the main reason for cancelling?", value: ["5 seperate reasons w radio buttons", <DiscountOffer></DiscountOffer>,"Continue"] },
+        { key:15, name: "What's the main reason for cancelling?", value: ["input text field related to previous reason", <DiscountOffer></DiscountOffer>,"Continue"] },
+
+        // version with NO discount
+        { key:16, name: "Help us understand how you were using Migrate Mate.", value: [<JobQuestions></JobQuestions>, "Continue"] },
+        { key:17, name: "What's the main reason for cancelling?", value: ["5 seperate reasons w radio buttons"] },
+        { key:18, name: "What's the main reason for cancelling?", value: ["input text field related to previous reason", "Continue"] },
+
+
+        { key:18, name: "Sorry to see you go", value: ["Close/Continue"] }
+    ]
+
+    
 
   return (
     <div
@@ -84,7 +156,11 @@ const Modal: React.FC<ModalProps> = ({
         onClick={handleModalClick}
       >
         {allTitles[titleCounter] && <h2 className="inner-modal-text">{allTitles[titleCounter].name}</h2>}
-        <div className="inner-modal-text">{allTitles[titleCounter].value}</div>
+        <div className="inner-modal-text"><ButtonList></ButtonList></div>
+            
+            {/* console.log("buttonLabels"); */}
+            
+        
 
             {/* continue on modal pathway */}
             <button    

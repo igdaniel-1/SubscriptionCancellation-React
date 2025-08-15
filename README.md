@@ -145,3 +145,14 @@ Prepping Modal Path Options
 - I think there may be a small error with "Offer Declined + How you were using", the sub-header text asks why the user is cancelling but the interactive element only lets them select numerical quantities for jobs. I will remove the red text for clarity of objective as their reason is inputted on following page.
 - Implementation wise, I'm thinking of creating an array of all the path options, indexing them and hopping through them as the user progresses through the modal story path.
 - There will be a dynamic 'continue' button that moves the content of the modal forward to the appropriate stage of the story path. I created this by adding a state variable to track which step of the story path the user was currently at. 
+
+Modal Path Array Structure
+- Now that I have an array full of all potential story path titles, I need to add data so I can have accurate buttons/features and text show up at each stage.
+- For each title text, I have added a key. Additionally, I have added an array called "value" that stores the components that will be rendered when this phase of the story path is called.
+- Some of the stages have reused components, such as the form text field, the number of jobs section, and the activate discount button.
+
+Developing the structure for reusable components
+- I created a simple Form with text input to be reused throughout the story path.
+- I created a component with the "how many roles" 3 questions.
+- Added component for discount offer button.
+- Created a component that turns the array of options for each story step into a displayed list of buttons.

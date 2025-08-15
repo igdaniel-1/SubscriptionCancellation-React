@@ -25,41 +25,7 @@ const mockSubscriptionData = {
 export default function ProfilePage() {
   const [loading] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
-  // state var for delete account modal being open or closed
-  // const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  // after closing modal, set modal state to closed
-  // const handleOverlayClick = () => {
-  //   setIsModalOpen(false);
-  // };
-  // modal closing handling
-  // const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
-  //   e.stopPropagation(); 
-  // };
-  // new vars for states within cancellation pathway
-  const [hasJob, setHasJob] = useState<boolean>(false);
-  const [gotJobThruMM, setGotJobThruMM] = useState<boolean>(false);
-  const [title, setTitle] = useState<String>("Hey Mate!!!");
-
-  // titles pathway for landed job
-  // const allTitles = [
-  //   { name: "hey", value: "Hey Mate!" },
-  //   { name: "congrats", value: "Congrats!" },
-  //   { name: "help", value: "What can we do to help?" },
-  //   { name: "how", value: "How were you using?" },
-  //   { name: "reason", value: "Reason for cancelling" },
-  //   { name: "sorry", value: "Sorry to see you go" }
-  // ]
-  // const jobAcquiredModalTitles = [
-  //   { name: "congrats", value: "Congrats!" },
-  //   { name: "help", value: "What can we do to help?" }
-  // ]
-  // // titles pathway for no job
-  // const noJobModalTitles = [
-  //   { name: "how", value: "How were you using?" },
-  //   { name: "reason", value: "Reason for cancelling" },
-  //   { name: "sorry", value: "Sorry to see you go" }
-  // ]
 
 
   
