@@ -87,7 +87,8 @@ const Modal: React.FC<ModalProps> = ({
     const ButtonList: React.FC<any> = ({}) => {
         console.log(allTitles[titleCounter].value);
         const listItems = allTitles[titleCounter].value.map(buttonValue =>
-            <li>{buttonValue}</li>
+            <button>{buttonValue}</button> 
+                // onClick={handleContinueClick}>{buttonValue}</button>         
         );
         return (
             <ul>{listItems}</ul>
@@ -95,13 +96,51 @@ const Modal: React.FC<ModalProps> = ({
     }
 
     // single use components
+    // this is a helper to store the "found job Y/N" state
+    const FoundJob: React.FC<any> = ({}) => {
+        return (
+            <div>
+                <h3>Whatever your answer, we just want to help you take the next step. With visa support, or by hearing how we can do better.</h3>
+                <button 
+                    onClick={function handleClick() {
+                        setHasJob(true);
+                        console.log("job set to true");
+                      }}
+                    className="modal-button-text">
+                    Yes
+                </button>
+                <button 
+                    onClick={function handleClick() {
+                        setHasJob(false);
+                        console.log("job set to false");
+                      }}
+                    className="modal-button-text">
+                    No
+                </button>
+            </div>
+        )
+    }
+    // this is a helper to set the "found job thru MM" state
     const FoundThroughMM: React.FC<any> = ({}) => {
         return (
             <div>
+                <h3>Did you find this role through Migrate Mate?</h3>
                 <button 
-                onClick={handleContinueClick}
-                className="modal-button-text">Yes</button>
-                <button className="modal-button-text">No</button>
+                    onClick={function handleClick() {
+                        setGotJobThruMM(true);
+                        console.log("MM set to true");
+                      }}
+                    className="modal-button-text">
+                    Yes
+                </button>
+                <button 
+                    onClick={function handleClick() {
+                        setGotJobThruMM(false);
+                        console.log("MM set to false");
+                      }}
+                    className="modal-button-text">
+                    No
+                </button>
             </div>
         )
     }
@@ -110,9 +149,9 @@ const Modal: React.FC<ModalProps> = ({
 
     // titles pathway 
     const allTitles = [
-        { name: "Hey Mate! Quick one before you go.", value: ["Yes", "No"], key:0 },
+        { name: "Hey Mate! Quick one before you go. Have you found a job yet?", value: [<FoundJob></FoundJob>], key:0 },
         // found a job pathway
-        { name: "Congrats on the new role!", value: [<FoundThroughMM></FoundThroughMM>, <JobQuestions></JobQuestions>, "Continue"], key:1 },
+        { name: "Congrats on the new role!", value: [<FoundThroughMM></FoundThroughMM>, <JobQuestions></JobQuestions>], key:1 },
         
         // job through MM
         { name: "What's one thing you wish we could've helped you with?", value: [<Form></Form>, "Continue"], key:2 },
@@ -156,11 +195,10 @@ const Modal: React.FC<ModalProps> = ({
         onClick={handleModalClick}
       >
         {allTitles[titleCounter] && <h2 className="inner-modal-text">{allTitles[titleCounter].name}</h2>}
+
+        {/* list of buttons relevant to each title page in the path */}
         <div className="inner-modal-text"><ButtonList></ButtonList></div>
             
-            {/* console.log("buttonLabels"); */}
-            
-        
 
             {/* continue on modal pathway */}
             <button    

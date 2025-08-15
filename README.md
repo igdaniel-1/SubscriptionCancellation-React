@@ -135,9 +135,7 @@ Supabase Install
 
 Running DB Setup
 - Error: Unable to find file supabase/seed.sql, resolved by moving seed.sql to /supabase folder
-
 - Error: "failed to inspect service: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?", resolved with downloading Docker Application
-
 - Error: "failed to send batch: ERROR: relation "users" does not exist (SQLSTATE 42P01)", attempted finding resolution by rerunning with '--debug' tag, no difference in error response
 - solution #2: restarted computer, error has disappeared!!
 
@@ -156,3 +154,8 @@ Developing the structure for reusable components
 - I created a component with the "how many roles" 3 questions.
 - Added component for discount offer button.
 - Created a component that turns the array of options for each story step into a displayed list of buttons.
+
+All buttons are continue buttons
+- I have a helper function controlling my onClick to proceed to the next title in the story path. This is not always the case in the demo.
+- I need to create more onClick helper functions to regulate the steps taken through the path.
+- I also need this so users can click the multiple question buttons on some of the pages without the story moving forward preemptively. 
