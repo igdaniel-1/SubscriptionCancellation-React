@@ -135,5 +135,8 @@ Supabase Install
 
 Running DB Setup
 - Error: Unable to find file supabase/seed.sql, resolved by moving seed.sql to /supabase folder
+
 - Error: "failed to inspect service: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?", resolved with downloading Docker Application
+
 - Error: "failed to send batch: ERROR: relation "users" does not exist (SQLSTATE 42P01)", attempted finding resolution by rerunning with '--debug' tag, no difference in error response
+- solution #2: restarted computer, error has disappeared!!
