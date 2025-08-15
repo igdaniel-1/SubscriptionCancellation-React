@@ -140,3 +140,6 @@ Running DB Setup
 
 - Error: "failed to send batch: ERROR: relation "users" does not exist (SQLSTATE 42P01)", attempted finding resolution by rerunning with '--debug' tag, no difference in error response
 - solution #2: restarted computer, error has disappeared!!
+
+Prepping Modal Path Options
+- I think there may be a small error with "Offer Declined + How you were using", the sub-header text asks why the user is cancelling but the interactive element only lets them select numerical quantities for jobs. I will remove the red text for clarity of objective as their reason is inputted on following page.

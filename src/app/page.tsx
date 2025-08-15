@@ -34,6 +34,11 @@ export default function ProfilePage() {
   const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation(); 
   };
+  // new vars for states within cancellation pathway
+  const [hasJob, setHasJob] = useState<boolean>(false);
+  const [gotJobThruMM, setGotJobThruMM] = useState<boolean>(false);
+
+
   
   // New state for settings toggle
   const [showAdvancedSettings, setShowAdvancedSettings] = useState(false);
@@ -281,11 +286,24 @@ export default function ProfilePage() {
                           className="bg-white p-6 rounded-xl shadow-lg w-96"
                           onClick={handleModalClick}
                         >
-                          <h2 className="text-xl font-semibold mb-4">Hello!</h2>
-                          <p className="mb-4">This is a simple modal example.</p>
+                          <h2 className="text-xl font-semibold mb-4">Hey Mate,</h2>
+                          <h2 className="text-xl font-semibold mb-4">Quick one before you go</h2>
+                          <h2 className="text-xl font-semibold mb-4">Have you found a job yet?</h2>
+                          <p className="mb-4">Whatever your answer, we just want to help you take the next step. With visa support, or by hearing how we can do better.</p>
+                          {/* yes job */}
+                          <button
+                            onClick={() => {
+                              console.log('yes job');
+                              // set state for yes have job
+                              setHasJob(true)
+                            }}
+                            className="inline-flex items-center justify-center w-full px-4 py-3 bg-white border border-red-200 text-red-600 rounded-lg hover:bg-red-50 hover:border-red-300 transition-all duration-200 shadow-sm group"
+                          >
+                          </button>
+                          {/* no job */}
                           <button
                             onClick={() => setIsOpen(false)}
-                            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                            // className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
                           >
                             Close
                           </button>
