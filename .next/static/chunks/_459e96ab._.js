@@ -26,28 +26,118 @@ body, children })=>{
     // titles pathway 
     const allTitles = [
         {
-            name: "hey",
-            value: "Hey Mate!"
+            name: "Hey Mate! Quick one before you go.",
+            value: [
+                "Yes",
+                "No"
+            ]
+        },
+        // found a job pathway
+        {
+            name: "Congrats on the new role!",
+            value: [
+                "find thru MM",
+                "PKGA",
+                "Continue"
+            ]
         },
         {
-            name: "congrats",
-            value: "Congrats!"
+            name: "What's one thing you wish we could've helped you with?",
+            value: [
+                "input text field",
+                "Continue"
+            ]
+        },
+        // job through MM
+        {
+            name: "We helped you land the job, immigration lawyer?",
+            value: [
+                "Yes",
+                "No"
+            ]
         },
         {
-            name: "help",
-            value: "What can we do to help?"
+            name: "We helped you land the job, YES immigration lawyer",
+            value: [
+                "input text field",
+                "Continue"
+            ]
         },
         {
-            name: "how",
-            value: "How were you using?"
+            name: "We helped you land the job, NO immigration lawyer",
+            value: [
+                "input text field",
+                "Continue"
+            ]
         },
         {
-            name: "reason",
-            value: "Reason for cancelling"
+            name: "All done!",
+            value: [
+                "Close/Continue"
+            ]
+        },
+        // job outside MM
+        {
+            name: "You landed the job, immigration lawyer?",
+            value: [
+                "Yes",
+                "No"
+            ]
         },
         {
-            name: "sorry",
-            value: "Sorry to see you go"
+            name: "You landed the job, YES immigration lawyer",
+            value: [
+                "input text field",
+                "Continue"
+            ]
+        },
+        {
+            name: "You landed the job, NO immigration lawyer",
+            value: [
+                "input text field",
+                "Continue"
+            ]
+        },
+        {
+            name: "Your cancellation is all sorted, mate, no more changes.",
+            value: [
+                "Close/Continue"
+            ]
+        },
+        // no job pathway
+        // here will be the optional DISCOUNT page
+        {
+            name: "We built this to help you land the job, this makes it a little easier.",
+            value: [
+                "Accept and Continue",
+                "Decline and Continue"
+            ]
+        },
+        {
+            name: "Help us understand how you were using Migrate Mate.",
+            value: [
+                "PKGA",
+                "Continue"
+            ]
+        },
+        {
+            name: "What's the main reason for cancelling?",
+            value: [
+                "5 seperate reasons w radio buttons"
+            ]
+        },
+        {
+            name: "What's the main reason for cancelling?",
+            value: [
+                "input text field related to previous reason",
+                "Continue"
+            ]
+        },
+        {
+            name: "Sorry to see you go",
+            value: [
+                "Close/Continue"
+            ]
         }
     ];
     const [titleCounter, setTitleCounter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
@@ -55,6 +145,8 @@ body, children })=>{
         e.preventDefault();
         console.log("current title: ", titleCounter);
         let currentTitleCount = titleCounter;
+        // here is where I will manage the state tree 
+        // there need to be jumps in the iteration to progress the story path accurately
         currentTitleCount++;
         setTitleCounter(currentTitleCount);
         console.log("updated title count: ", titleCounter);
@@ -72,7 +164,7 @@ body, children })=>{
                     children: allTitles[titleCounter].name
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 66,
+                    lineNumber: 86,
                     columnNumber: 37
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -80,7 +172,7 @@ body, children })=>{
                     children: allTitles[titleCounter].value
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 67,
+                    lineNumber: 87,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -92,7 +184,7 @@ body, children })=>{
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 70,
+                    lineNumber: 90,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -101,18 +193,18 @@ body, children })=>{
                     children: "Close"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 77,
+                    lineNumber: 97,
                     columnNumber: 13
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 61,
+            lineNumber: 81,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/modal.tsx",
-        lineNumber: 57,
+        lineNumber: 77,
         columnNumber: 5
     }, this);
 };
