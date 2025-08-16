@@ -41,7 +41,7 @@ This repository contains:
 ## I am a proponent of bullet points. As such, my description for my progress is in a pseudo-journal format below.
 ## I hope the stylistic choice of presenting my work in this way makes my thought process visible and intuitive.
 
-## Here is the link to the github repository I used where you can see my commits: [https://github.com/igdaniel-1/SubscriptionCancellation-React](https://github.com/igdaniel-1/mm-cancel-flow-task-India)
+## Here is the link to the github repository I used where you can see my commits: (https://github.com/igdaniel-1/mm-cancel-flow-task-India)
 
 ## Working Progress Log START:
 
