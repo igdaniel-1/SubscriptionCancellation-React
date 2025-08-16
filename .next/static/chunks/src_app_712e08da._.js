@@ -20,12 +20,12 @@ const Form = ({})=>{
             type: "text"
         }, void 0, false, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 29,
+            lineNumber: 30,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/modal.tsx",
-        lineNumber: 27,
+        lineNumber: 28,
         columnNumber: 9
     }, this);
 };
@@ -69,6 +69,12 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             }
             // there's a 50% chance the page is redirected to the NON discount page, page 14
             if (choice == 2) {
+                // this is the non-discount path, we can set the downsell to false
+                // bc it won't be available to this user
+                updateCancellationData({
+                    downsell_variant: 'No',
+                    accepted_downsell: 'No'
+                });
                 let currentTitleCount = 14;
                 setTitleCounter(currentTitleCount);
             }
@@ -90,6 +96,13 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             // yes job and completed Imm Lawyer feedback (path 2 - No MM),
             // no job and no redeem discount, 
             // and no job plus selected discount 
+            // at this point we can set their account status
+            // if they selected a reason to leave, their subscription is NOT active
+            if (selectedRadioValue != "None") {
+                updateCancellationData({
+                    cancelAtPeriodEnd: true
+                });
+            }
             onClose();
         } else {
             // set standard page progression logic
@@ -105,14 +118,14 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                 children: buttonValue
             }, void 0, false, {
                 fileName: "[project]/src/app/modal.tsx",
-                lineNumber: 134,
+                lineNumber: 144,
                 columnNumber: 13
             }, this));
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
             children: listItems
         }, void 0, false, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 138,
+            lineNumber: 148,
             columnNumber: 13
         }, this);
     };
@@ -125,7 +138,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "Whatever your answer, we just want to help you take the next step. With visa support, or by hearing how we can do better."
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 147,
+                    lineNumber: 157,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -137,7 +150,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "Yes"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 148,
+                    lineNumber: 158,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -149,13 +162,13 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "No"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 156,
+                    lineNumber: 166,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 146,
+            lineNumber: 156,
             columnNumber: 13
         }, this);
     };
@@ -167,7 +180,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "Did you find this role through Migrate Mate?"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 171,
+                    lineNumber: 181,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -179,7 +192,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "Yes"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 172,
+                    lineNumber: 182,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -191,13 +204,13 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "No"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 180,
+                    lineNumber: 190,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 170,
+            lineNumber: 180,
             columnNumber: 13
         }, this);
     };
@@ -209,7 +222,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "Is your company providing an immigration lawyer to help with your visa?"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 195,
+                    lineNumber: 205,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -221,7 +234,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "Yes"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 196,
+                    lineNumber: 206,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -233,13 +246,13 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "No"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 204,
+                    lineNumber: 214,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 194,
+            lineNumber: 204,
             columnNumber: 13
         }, this);
     };
@@ -252,18 +265,18 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                         children: "What visa will you be applying for?"
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 220,
+                        lineNumber: 230,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Form, {}, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 221,
+                        lineNumber: 231,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/modal.tsx",
-                lineNumber: 219,
+                lineNumber: 229,
                 columnNumber: 17
             }, this);
         } else {
@@ -274,25 +287,25 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                         children: "We can connect you with one of our trusted partners."
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 228,
+                        lineNumber: 238,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         children: "Which visa would you like to apply for?"
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 229,
+                        lineNumber: 239,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Form, {}, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 230,
+                        lineNumber: 240,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/modal.tsx",
-                lineNumber: 227,
+                lineNumber: 237,
                 columnNumber: 17
             }, this);
         }
@@ -314,12 +327,12 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                 children: "Get $10 off"
             }, void 0, false, {
                 fileName: "[project]/src/app/modal.tsx",
-                lineNumber: 239,
+                lineNumber: 249,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 238,
+            lineNumber: 248,
             columnNumber: 13
         }, this);
     };
@@ -331,12 +344,12 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                 children: label
             }, void 0, false, {
                 fileName: "[project]/src/app/modal.tsx",
-                lineNumber: 257,
+                lineNumber: 267,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 256,
+            lineNumber: 266,
             columnNumber: 13
         }, this);
     };
@@ -350,7 +363,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                         onSelect: ()=>setSelectedRadioValue("Too expensive")
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 269,
+                        lineNumber: 279,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
@@ -359,7 +372,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                         onSelect: ()=>setSelectedRadioValue("Platform not helpful")
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 281,
+                        lineNumber: 292,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
@@ -368,7 +381,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                         onSelect: ()=>setSelectedRadioValue("Not enough relevant jobs")
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 293,
+                        lineNumber: 304,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
@@ -377,7 +390,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                         onSelect: ()=>setSelectedRadioValue("Decided not to move")
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 305,
+                        lineNumber: 316,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
@@ -386,40 +399,46 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                         onSelect: ()=>setSelectedRadioValue("Other")
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 317,
+                        lineNumber: 328,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/modal.tsx",
-                lineNumber: 268,
+                lineNumber: 278,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 267,
+            lineNumber: 277,
             columnNumber: 13
         }, this);
     };
     const RadioButtonSelectionFollowUp = ({})=>{
+        // change cancel subscription reason to reason provided on reason selection page
+        if (selectedRadioValue != "None") {
+            updateCancellationData({
+                reason: selectedRadioValue
+            });
+        }
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                     children: selectedRadioValue
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 336,
+                    lineNumber: 351,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Form, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 337,
+                    lineNumber: 352,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 335,
+            lineNumber: 350,
             columnNumber: 13
         }, this);
     };
@@ -430,111 +449,111 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "How many roles did you apply for through Migrate Mate?"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 344,
+                    lineNumber: 359,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "0"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 345,
+                    lineNumber: 360,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "1-5"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 348,
+                    lineNumber: 363,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "6-20"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 351,
+                    lineNumber: 366,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "20+"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 354,
+                    lineNumber: 369,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                     children: "How many companies did you email directly?"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 357,
+                    lineNumber: 372,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "0"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 358,
+                    lineNumber: 373,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "1-5"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 361,
+                    lineNumber: 376,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "6-20"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 364,
+                    lineNumber: 379,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "20+"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 367,
+                    lineNumber: 382,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                     children: "How many different companies did you interview with?"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 370,
+                    lineNumber: 385,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "0"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 371,
+                    lineNumber: 386,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "1-2"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 374,
+                    lineNumber: 389,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "3-5"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 377,
+                    lineNumber: 392,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSingle, {
                     label: "5+"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 380,
+                    lineNumber: 395,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 343,
+            lineNumber: 358,
             columnNumber: 13
         }, this);
     };
@@ -545,7 +564,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FoundJob, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 392,
+                    lineNumber: 407,
                     columnNumber: 89
                 }, this)
             ],
@@ -557,12 +576,12 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(FoundThroughMM, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 394,
+                    lineNumber: 409,
                     columnNumber: 54
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(JobQuestions, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 394,
+                    lineNumber: 409,
                     columnNumber: 89
                 }, this)
             ],
@@ -574,7 +593,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Form, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 397,
+                    lineNumber: 412,
                     columnNumber: 83
                 }, this)
             ],
@@ -585,7 +604,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ImmigrationLawyer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 398,
+                    lineNumber: 413,
                     columnNumber: 93
                 }, this)
             ],
@@ -596,7 +615,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ImmigrationLawyerFollowUp, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 399,
+                    lineNumber: 414,
                     columnNumber: 93
                 }, this)
             ],
@@ -616,7 +635,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Form, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 403,
+                    lineNumber: 418,
                     columnNumber: 83
                 }, this),
                 "Continue"
@@ -628,7 +647,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ImmigrationLawyer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 404,
+                    lineNumber: 419,
                     columnNumber: 147
                 }, this)
             ],
@@ -639,7 +658,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ImmigrationLawyerFollowUp, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 405,
+                    lineNumber: 420,
                     columnNumber: 147
                 }, this)
             ],
@@ -663,7 +682,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                 "Decline and Continue",
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DiscountOffer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 411,
+                    lineNumber: 426,
                     columnNumber: 171
                 }, this)
             ]
@@ -674,12 +693,12 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(JobQuestions, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 412,
+                    lineNumber: 427,
                     columnNumber: 88
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DiscountOffer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 412,
+                    lineNumber: 427,
                     columnNumber: 119
                 }, this)
             ]
@@ -690,12 +709,12 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSelection, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 413,
+                    lineNumber: 428,
                     columnNumber: 75
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DiscountOffer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 413,
+                    lineNumber: 428,
                     columnNumber: 122
                 }, this)
             ]
@@ -706,12 +725,12 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSelectionFollowUp, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 414,
+                    lineNumber: 429,
                     columnNumber: 75
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DiscountOffer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 414,
+                    lineNumber: 429,
                     columnNumber: 138
                 }, this)
             ]
@@ -723,7 +742,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(JobQuestions, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 417,
+                    lineNumber: 432,
                     columnNumber: 88
                 }, this)
             ]
@@ -734,7 +753,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSelection, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 418,
+                    lineNumber: 433,
                     columnNumber: 75
                 }, this)
             ]
@@ -745,7 +764,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(RadioButtonSelectionFollowUp, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 419,
+                    lineNumber: 434,
                     columnNumber: 75
                 }, this)
             ]
@@ -781,19 +800,19 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: allTitles[titleCounter].name
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 441,
+                    lineNumber: 456,
                     columnNumber: 37
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "inner-modal-text",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ButtonList, {}, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 444,
+                        lineNumber: 459,
                         columnNumber: 43
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 444,
+                    lineNumber: 459,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -805,7 +824,7 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 448,
+                    lineNumber: 463,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -814,18 +833,18 @@ body, children, user_data, subscription_data, cancellation_data, updateCancellat
                     children: "Close"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 455,
+                    lineNumber: 470,
                     columnNumber: 13
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 435,
+            lineNumber: 450,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/modal.tsx",
-        lineNumber: 429,
+        lineNumber: 444,
         columnNumber: 5
     }, this);
 };
@@ -1775,226 +1794,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
-"[project]/node_modules/next/dist/compiled/react/cjs/react-jsx-dev-runtime.development.js [app-client] (ecmascript)": (function(__turbopack_context__) {
-
-var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;
-{
-/**
- * @license React
- * react-jsx-dev-runtime.development.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-"use strict";
-"production" !== ("TURBOPACK compile-time value", "development") && function() {
-    function getComponentNameFromType(type) {
-        if (null == type) return null;
-        if ("function" === typeof type) return type.$$typeof === REACT_CLIENT_REFERENCE ? null : type.displayName || type.name || null;
-        if ("string" === typeof type) return type;
-        switch(type){
-            case REACT_FRAGMENT_TYPE:
-                return "Fragment";
-            case REACT_PROFILER_TYPE:
-                return "Profiler";
-            case REACT_STRICT_MODE_TYPE:
-                return "StrictMode";
-            case REACT_SUSPENSE_TYPE:
-                return "Suspense";
-            case REACT_SUSPENSE_LIST_TYPE:
-                return "SuspenseList";
-            case REACT_ACTIVITY_TYPE:
-                return "Activity";
-        }
-        if ("object" === typeof type) switch("number" === typeof type.tag && console.error("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), type.$$typeof){
-            case REACT_PORTAL_TYPE:
-                return "Portal";
-            case REACT_CONTEXT_TYPE:
-                return (type.displayName || "Context") + ".Provider";
-            case REACT_CONSUMER_TYPE:
-                return (type._context.displayName || "Context") + ".Consumer";
-            case REACT_FORWARD_REF_TYPE:
-                var innerType = type.render;
-                type = type.displayName;
-                type || (type = innerType.displayName || innerType.name || "", type = "" !== type ? "ForwardRef(" + type + ")" : "ForwardRef");
-                return type;
-            case REACT_MEMO_TYPE:
-                return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-            case REACT_LAZY_TYPE:
-                innerType = type._payload;
-                type = type._init;
-                try {
-                    return getComponentNameFromType(type(innerType));
-                } catch (x) {}
-        }
-        return null;
-    }
-    function testStringCoercion(value) {
-        return "" + value;
-    }
-    function checkKeyStringCoercion(value) {
-        try {
-            testStringCoercion(value);
-            var JSCompiler_inline_result = !1;
-        } catch (e) {
-            JSCompiler_inline_result = !0;
-        }
-        if (JSCompiler_inline_result) {
-            JSCompiler_inline_result = console;
-            var JSCompiler_temp_const = JSCompiler_inline_result.error;
-            var JSCompiler_inline_result$jscomp$0 = "function" === typeof Symbol && Symbol.toStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
-            JSCompiler_temp_const.call(JSCompiler_inline_result, "The provided key is an unsupported type %s. This value must be coerced to a string before using it here.", JSCompiler_inline_result$jscomp$0);
-            return testStringCoercion(value);
-        }
-    }
-    function getTaskName(type) {
-        if (type === REACT_FRAGMENT_TYPE) return "<>";
-        if ("object" === typeof type && null !== type && type.$$typeof === REACT_LAZY_TYPE) return "<...>";
-        try {
-            var name = getComponentNameFromType(type);
-            return name ? "<" + name + ">" : "<...>";
-        } catch (x) {
-            return "<...>";
-        }
-    }
-    function getOwner() {
-        var dispatcher = ReactSharedInternals.A;
-        return null === dispatcher ? null : dispatcher.getOwner();
-    }
-    function UnknownOwner() {
-        return Error("react-stack-top-frame");
-    }
-    function hasValidKey(config) {
-        if (hasOwnProperty.call(config, "key")) {
-            var getter = Object.getOwnPropertyDescriptor(config, "key").get;
-            if (getter && getter.isReactWarning) return !1;
-        }
-        return void 0 !== config.key;
-    }
-    function defineKeyPropWarningGetter(props, displayName) {
-        function warnAboutAccessingKey() {
-            specialPropKeyWarningShown || (specialPropKeyWarningShown = !0, console.error("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props)", displayName));
-        }
-        warnAboutAccessingKey.isReactWarning = !0;
-        Object.defineProperty(props, "key", {
-            get: warnAboutAccessingKey,
-            configurable: !0
-        });
-    }
-    function elementRefGetterWithDeprecationWarning() {
-        var componentName = getComponentNameFromType(this.type);
-        didWarnAboutElementRef[componentName] || (didWarnAboutElementRef[componentName] = !0, console.error("Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."));
-        componentName = this.props.ref;
-        return void 0 !== componentName ? componentName : null;
-    }
-    function ReactElement(type, key, self, source, owner, props, debugStack, debugTask) {
-        self = props.ref;
-        type = {
-            $$typeof: REACT_ELEMENT_TYPE,
-            type: type,
-            key: key,
-            props: props,
-            _owner: owner
-        };
-        null !== (void 0 !== self ? self : null) ? Object.defineProperty(type, "ref", {
-            enumerable: !1,
-            get: elementRefGetterWithDeprecationWarning
-        }) : Object.defineProperty(type, "ref", {
-            enumerable: !1,
-            value: null
-        });
-        type._store = {};
-        Object.defineProperty(type._store, "validated", {
-            configurable: !1,
-            enumerable: !1,
-            writable: !0,
-            value: 0
-        });
-        Object.defineProperty(type, "_debugInfo", {
-            configurable: !1,
-            enumerable: !1,
-            writable: !0,
-            value: null
-        });
-        Object.defineProperty(type, "_debugStack", {
-            configurable: !1,
-            enumerable: !1,
-            writable: !0,
-            value: debugStack
-        });
-        Object.defineProperty(type, "_debugTask", {
-            configurable: !1,
-            enumerable: !1,
-            writable: !0,
-            value: debugTask
-        });
-        Object.freeze && (Object.freeze(type.props), Object.freeze(type));
-        return type;
-    }
-    function jsxDEVImpl(type, config, maybeKey, isStaticChildren, source, self, debugStack, debugTask) {
-        var children = config.children;
-        if (void 0 !== children) if (isStaticChildren) if (isArrayImpl(children)) {
-            for(isStaticChildren = 0; isStaticChildren < children.length; isStaticChildren++)validateChildKeys(children[isStaticChildren]);
-            Object.freeze && Object.freeze(children);
-        } else console.error("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
-        else validateChildKeys(children);
-        if (hasOwnProperty.call(config, "key")) {
-            children = getComponentNameFromType(type);
-            var keys = Object.keys(config).filter(function(k) {
-                return "key" !== k;
-            });
-            isStaticChildren = 0 < keys.length ? "{key: someKey, " + keys.join(": ..., ") + ": ...}" : "{key: someKey}";
-            didWarnAboutKeySpread[children + isStaticChildren] || (keys = 0 < keys.length ? "{" + keys.join(": ..., ") + ": ...}" : "{}", console.error('A props object containing a "key" prop is being spread into JSX:\n  let props = %s;\n  <%s {...props} />\nReact keys must be passed directly to JSX without using spread:\n  let props = %s;\n  <%s key={someKey} {...props} />', isStaticChildren, children, keys, children), didWarnAboutKeySpread[children + isStaticChildren] = !0);
-        }
-        children = null;
-        void 0 !== maybeKey && (checkKeyStringCoercion(maybeKey), children = "" + maybeKey);
-        hasValidKey(config) && (checkKeyStringCoercion(config.key), children = "" + config.key);
-        if ("key" in config) {
-            maybeKey = {};
-            for(var propName in config)"key" !== propName && (maybeKey[propName] = config[propName]);
-        } else maybeKey = config;
-        children && defineKeyPropWarningGetter(maybeKey, "function" === typeof type ? type.displayName || type.name || "Unknown" : type);
-        return ReactElement(type, children, self, source, getOwner(), maybeKey, debugStack, debugTask);
-    }
-    function validateChildKeys(node) {
-        "object" === typeof node && null !== node && node.$$typeof === REACT_ELEMENT_TYPE && node._store && (node._store.validated = 1);
-    }
-    var React = __turbopack_context__.r("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler");
-    Symbol.for("react.provider");
-    var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
-        return null;
-    };
-    React = {
-        "react-stack-bottom-frame": function(callStackForError) {
-            return callStackForError();
-        }
-    };
-    var specialPropKeyWarningShown;
-    var didWarnAboutElementRef = {};
-    var unknownOwnerDebugStack = React["react-stack-bottom-frame"].bind(React, UnknownOwner)();
-    var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
-    var didWarnAboutKeySpread = {};
-    exports.Fragment = REACT_FRAGMENT_TYPE;
-    exports.jsxDEV = function(type, config, maybeKey, isStaticChildren, source, self) {
-        var trackActualOwner = 1e4 > ReactSharedInternals.recentlyCreatedOwnerStacks++;
-        return jsxDEVImpl(type, config, maybeKey, isStaticChildren, source, self, trackActualOwner ? Error("react-stack-top-frame") : unknownOwnerDebugStack, trackActualOwner ? createTask(getTaskName(type)) : unknownOwnerDebugTask);
-    };
-}();
-}}),
-"[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)": (function(__turbopack_context__) {
-
-var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;
-{
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-'use strict';
-if ("TURBOPACK compile-time falsy", 0) {
-    "TURBOPACK unreachable";
-} else {
-    module.exports = __turbopack_context__.r("[project]/node_modules/next/dist/compiled/react/cjs/react-jsx-dev-runtime.development.js [app-client] (ecmascript)");
-}
-}}),
 }]);
 
-//# sourceMappingURL=_459e96ab._.js.map
+//# sourceMappingURL=src_app_712e08da._.js.map

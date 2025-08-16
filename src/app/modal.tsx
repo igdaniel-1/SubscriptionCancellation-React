@@ -1,12 +1,25 @@
 import React, { MouseEvent, useState } from "react";
 
-interface ModalProps {
+interface CancellationData{
+    user_id: string,
+    monthlyPrice:number,
+    downsell_variant:string,
+    reason:string,
+    accepted_downsell:string,
+    cancelAtPeriodEnd: boolean,
+  }
+
+type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
   body?: string;
 //   children?: string;
   children?: React.ReactNode;
+  user_data: Object;
+  subscription_data: Object;
+  cancellation_data: CancellationData;
+  updateCancellationData:(newCancellationData: Partial<CancellationData>) => void;
 }
 
 // reusable components
@@ -36,6 +49,11 @@ const Modal: React.FC<ModalProps> = ({
     //   title,
     body,
     children,
+    user_data,
+    subscription_data,
+    cancellation_data,
+    updateCancellationData,
+
     //   backgroundColor = "white",
     }) => {
     if (!isOpen) return null;
@@ -60,6 +78,7 @@ const Modal: React.FC<ModalProps> = ({
     const handleContinueClick = (e) => {
         e.preventDefault();
         console.log("current title: ", titleCounter);
+        console.log("current data: ", user_data, subscription_data, cancellation_data);
         
         // here is where I will manage the state tree 
         // there needs to be jumps in the iteration to progress the story path accurately
@@ -75,6 +94,9 @@ const Modal: React.FC<ModalProps> = ({
             }
             // there's a 50% chance the page is redirected to the NON discount page, page 14
             if (choice == 2){
+                // this is the non-discount path, we can set the downsell to false
+                // bc it won't be available to this user
+                updateCancellationData({downsell_variant: 'No', accepted_downsell:'No'});
                 let currentTitleCount = 14;
                 setTitleCounter(currentTitleCount);
             }
@@ -96,6 +118,12 @@ const Modal: React.FC<ModalProps> = ({
             // yes job and completed Imm Lawyer feedback (path 2 - No MM),
             // no job and no redeem discount, 
             // and no job plus selected discount 
+
+            // at this point we can set their account status
+            // if they selected a reason to leave, their subscription is NOT active
+            if (selectedRadioValue!="None"){
+                updateCancellationData({cancelAtPeriodEnd: true});
+            }
             onClose();
         }
         else{
@@ -221,8 +249,11 @@ const Modal: React.FC<ModalProps> = ({
                 <button onClick={function handleClick() {
                             setTitleCounter(18);
                             console.log("discount set to true");
+                            // cancellation_data.downsell_variant={true};
+                            updateCancellationData({downsell_variant: 'Yes', accepted_downsell:'Yes'});
+                            console.log('cancel data:', cancellation_data);
                           }}
-                    className="discount-button-text">Get 50% off</button>
+                    className="discount-button-text">Get $10 off</button>
             </div>
         )
     }
@@ -252,6 +283,7 @@ const Modal: React.FC<ModalProps> = ({
                             "Too expensive"
                         }
                         onSelect={() =>
+                            
                             setSelectedRadioValue(
                                 "Too expensive"
                             )
@@ -310,6 +342,10 @@ const Modal: React.FC<ModalProps> = ({
         )
     }
     const RadioButtonSelectionFollowUp: React.FC<any> = ({}) => {
+        // change cancel subscription reason to reason provided on reason selection page
+        if (selectedRadioValue!="None"){
+            updateCancellationData({reason: selectedRadioValue});
+        }
         return (
             <div>
                 <h3>{selectedRadioValue}</h3>

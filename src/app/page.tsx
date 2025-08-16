@@ -2,30 +2,71 @@
 
 import { useState,MouseEvent } from 'react';
 import Modal from "./modal";
+// import { supabase } from "../supabase";
 
-// Mock user data for UI display
-const mockUser = {
-  email: 'user@example.com',
-  id: '1'
-};
+// interfaces for data structures to be passed into the cancel subscription modal
+interface UserData{
+  email: string;
+  id: string;
+}
+interface SubscriptionData{
+  status: string,
+  isTrialSubscription: boolean,
+  cancelAtPeriodEnd: boolean,
+  currentPeriodEnd: string,
+  monthlyPrice: number,
+  isUCStudent: boolean,
+  hasManagedAccess: boolean,
+  managedOrganization: string,
+  downsellAccepted: boolean
+}
+interface CancellationData{
+  user_id: string,
+  monthlyPrice:number,
+  downsell_variant:string,
+  reason:string,
+  accepted_downsell:string
+}
 
-// Mock subscription data for UI display
-const mockSubscriptionData = {
-  status: 'active',
-  isTrialSubscription: false,
-  cancelAtPeriodEnd: false,
-  currentPeriodEnd: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days from now
-  monthlyPrice: 25,
-  isUCStudent: false,
-  hasManagedAccess: false,
-  managedOrganization: null,
-  downsellAccepted: false
-};
+
+
 
 export default function ProfilePage() {
   const [loading] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  // Now that we have the interfaces, 
+  // let's build the sample data that will be used 
+  // in the unsubscribe modal pathway
+
+  // Mock user data for UI display
+  const mockUser = {
+    email: 'user@example.com',
+    id: '1'
+  };
+
+  // Mock subscription data for UI display
+  const [mockSubscriptionData, setMockSubscriptionData] = useState<SubscriptionData>({
+    status: 'Active',
+    isTrialSubscription: false,
+    cancelAtPeriodEnd: false,
+    currentPeriodEnd: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days from now
+    monthlyPrice: 25,
+    isUCStudent: false,
+    hasManagedAccess: false,
+    managedOrganization: 'none',
+    downsellAccepted: false
+  });
+
+  // Mock cancellation data for UI display
+  const [mockCancellationData, setMockCancellationData] = useState<CancellationData>({
+    user_id: mockUser.id,
+    monthlyPrice:mockSubscriptionData.monthlyPrice,
+    downsell_variant:"",
+    reason:"",
+    accepted_downsell:""
+  });
 
 
   
@@ -154,9 +195,12 @@ export default function ProfilePage() {
                     <p className="text-sm font-medium text-gray-900">Subscription status</p>
                   </div>
                   <div className="flex items-center space-x-2">
-                    {mockSubscriptionData.status === 'active' && !mockSubscriptionData.isTrialSubscription && !mockSubscriptionData.cancelAtPeriodEnd && (
+
+                    {/* display actual subcription status as it is updated by the unsubscribe flow */}
+
+                    {!mockSubscriptionData.isTrialSubscription && !mockSubscriptionData.cancelAtPeriodEnd && (
                       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-green-50 text-green-700 border border-green-200">
-                        Active
+                        {mockSubscriptionData.status} 
                       </span>
                     )}
                   </div>
@@ -254,8 +298,14 @@ export default function ProfilePage() {
                     <button
                       onClick={() => {
                         console.log('Cancel button clicked');
+                        // cancellation flow begun
+
+                        // create cancellations table and add new value
+
+
                         // set state for modal being currently open
-                        // setIsOpen(true)
+
+
                         setIsModalOpen(true)
                       }}
                       className="inline-flex items-center justify-center w-full px-4 py-3 bg-white border border-red-200 text-red-600 rounded-lg hover:bg-red-50 hover:border-red-300 transition-all duration-200 shadow-sm group"
@@ -269,6 +319,10 @@ export default function ProfilePage() {
                     <Modal
                       isOpen={isModalOpen}
                       onClose={() => setIsModalOpen(false)}
+                      user_data={mockUser}
+                      subscription_data={mockSubscriptionData}
+                      cancellation_data={mockCancellationData}
+                      updateCancellationData={(newCancellationData)=>setMockCancellationData({...mockCancellationData,...newCancellationData})}
                       // title={allTitles[0].value}
                       // body={allTitles[0].name}
                       // children={allTitles[0].name}

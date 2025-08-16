@@ -184,3 +184,12 @@ Redirect to the dialogue path where Migrate Mate didn't help them find the job
 Construct the UI for the reusable JobQuestions component
 - Right now the buttons on this component do nothing when clicked.
 - Changed values for the buttons to reflect the Figma example.
+
+Editting user data from the front-end
+- In order to modify the provided sample data, I need to pass that data into my child component AKA the unsubscribe modal.
+- Once there, I can modify the data in my DiscountOffer helper function.
+- This updates the downsell_variant and the accepted-downsell to "Yes".
+- Likewise, I added the opposite value editting to the non-disocunt user path.
+- For the 50% of user's who are not offered this deal, my continueClick helper function automatically sets their downsell_variant and the accepted-downsell to "No".
+- I added the cancel.reason update to my radioButtonSelection helper. After the user selects the reason to cancel and then continues to the next page, the cancel interface is updated with the selected reason value.
+- If the user completes the full story flow of the unsubscribe without using the deal to resubscribe, their cancelAtPeriodEnd status is updated to true. This is managed within my continueClick helper.
