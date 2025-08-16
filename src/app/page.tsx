@@ -1,8 +1,7 @@
 'use client';
 
-import { useState,MouseEvent } from 'react';
+import { useState } from 'react';
 import Modal from "./modal";
-// import { supabase } from "../supabase";
 
 // interfaces for data structures to be passed into the cancel subscription modal
 interface UserData{

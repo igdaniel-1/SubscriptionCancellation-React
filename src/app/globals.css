@@ -25,7 +25,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 #outerModalContainer{
-  background-color: gray;
+  border: 10px solid gray;
   width: 50%;
   height: 50%;
   position: absolute;
@@ -39,22 +39,41 @@ body {
 
 }
 #innerModalContainer{
+  padding:20px;
   background-color: white;
   width: 80%;
   height: 80%;
-  justify-self: center;
+  /* justify-self: center; */
 }
 .inner-modal-text {
   color: black;
+}
+form{
+  /* background-color: gray; */
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 4px;
 }
 button.modal-button-text {
   border: 3px black;
 }
 .modal-button-text{
+  border: 1px solid white;
+  border-radius: 2px;
   background-color: gray;
-  color: black;
+  color: white;
+  padding: 5px;
 }
 .discount-button-text{
   background-color: green;
   color: white;
+}
+.radioHolder{
+  display: flex;
+  flex-direction: row;
+}
+li button{
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding: 5px;
 }

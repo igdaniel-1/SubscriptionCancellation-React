@@ -357,44 +357,57 @@ const Modal: React.FC<ModalProps> = ({
         return (
             <div>
                 <h3>How many roles did you apply for through Migrate Mate?</h3>
-                <RadioButtonSingle
-                    label="0"
-                />
-                <RadioButtonSingle
-                    label="1-5"
-                />
-                <RadioButtonSingle
-                    label="6-20"
-                />
-                <RadioButtonSingle
-                    label="20+"
-                />
+                <div className="radioHolder">
+                    <RadioButtonSingle
+                        label="0"
+                        className="radioButton"
+                    />
+                    <RadioButtonSingle
+                        label="1-5"
+                        className="radioButton"
+                    />
+                    <RadioButtonSingle
+                        label="6-20"
+                        className="radioButton"
+                    />
+                    <RadioButtonSingle
+                        label="20+"
+                        className="radioButton"
+                    />
+                </div>
+                
                 <h3>How many companies did you email directly?</h3>
-                <RadioButtonSingle
-                    label="0"
-                />
-                <RadioButtonSingle
-                    label="1-5"
-                />
-                <RadioButtonSingle
-                    label="6-20"
-                />
-                <RadioButtonSingle
-                    label="20+"
-                />
+                <div className="radioHolder">
+                    <RadioButtonSingle
+                        label="0"
+                    />
+                    <RadioButtonSingle
+                        label="1-5"
+                    />
+                    <RadioButtonSingle
+                        label="6-20"
+                    />
+                    <RadioButtonSingle
+                        label="20+"
+                    />
+                </div>
+                
                 <h3>How many different companies did you interview with?</h3>
-                <RadioButtonSingle
-                    label="0"
-                />
-                <RadioButtonSingle
-                    label="1-2"
-                />
-                <RadioButtonSingle
-                    label="3-5"
-                />
-                <RadioButtonSingle
-                    label="5+"
-                />
+                <div className="radioHolder">
+                    <RadioButtonSingle
+                        label="0"
+                    />
+                    <RadioButtonSingle
+                        label="1-2"
+                    />
+                    <RadioButtonSingle
+                        label="3-5"
+                    />
+                    <RadioButtonSingle
+                        label="5+"
+                    />
+                </div>
+                
             </div>
             
         )
@@ -413,13 +426,13 @@ const Modal: React.FC<ModalProps> = ({
         { name: "We helped you land the job, now let's help you secure your visa.", value: [<ImmigrationLawyer></ImmigrationLawyer>], key:3 },
         { name: "We helped you land the job, now let's help you secure your visa.", value: [<ImmigrationLawyerFollowUp></ImmigrationLawyerFollowUp>], key:4 },
         // { name: "We helped you land the job, NO immigration lawyer", value: ["input text field", "Continue"], key:5 },
-        { name: "All done!", value: ["Close/Continue"], key:6 },
+        { name: "All done!", value: [" "], key:6 },
         // job outside MM
         { name: "What's one thing you wish we could've helped you with?", value: [<Form></Form>, "Continue"], key:7 },
         { name: "You landed the job! That's what we live for. Even if it wasn’t through Migrate Mate, let us help get your visa sorted.", value: [<ImmigrationLawyer></ImmigrationLawyer>], key:8 },
         { name: "You landed the job! That's what we live for. Even if it wasn’t through Migrate Mate, let us help get your visa sorted.", value: [<ImmigrationLawyerFollowUp></ImmigrationLawyerFollowUp>], key:9 },
         // { name: "You landed the job, NO immigration lawyer", value: ["input text field", "Continue"], key:10},
-        { name: "Your cancellation is all sorted, mate, no more changes.", value: ["Close/Continue"], key:11 },
+        { name: "Your cancellation is all sorted, mate, no more changes.", value: [" "], key:11 },
 
         // no job pathway
         // here will be the optional DISCOUNT page
@@ -434,7 +447,7 @@ const Modal: React.FC<ModalProps> = ({
         { key:18, name: "What's the main reason for cancelling?", value: [<RadioButtonSelectionFollowUp></RadioButtonSelectionFollowUp>] },
 
 
-        { key:18, name: "Sorry to see you go", value: ["Close/Continue"] },
+        { key:18, name: "Sorry to see you go", value: [" "] },
         { key:19, name: "Great choice, mate! You're still on the path to your dream role.", value: ["."] }
     ]
 
@@ -464,7 +477,7 @@ const Modal: React.FC<ModalProps> = ({
                 onClick={handleContinueClick}
                 className="modal-button-text"
                 >
-                Continue, {titleCounter}
+                Continue
             </button>
             {/* close the modal */}
             <button

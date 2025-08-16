@@ -359,6 +359,10 @@
 @layer components;
 
 @layer utilities {
+  .visible {
+    visibility: visible;
+  }
+
   .fixed {
     position: fixed;
   }
@@ -919,7 +923,7 @@ body {
 }
 
 #outerModalContainer {
-  background-color: gray;
+  border: 10px solid gray;
   width: 50%;
   height: 50%;
   position: absolute;
@@ -929,13 +933,19 @@ body {
 
 #innerModalContainer {
   background-color: #fff;
-  justify-self: center;
   width: 80%;
   height: 80%;
+  padding: 20px;
 }
 
 .inner-modal-text {
   color: #000;
+}
+
+form {
+  border: 2px solid #000;
+  border-radius: 4px;
+  height: 50px;
 }
 
 button.modal-button-text {
@@ -943,13 +953,27 @@ button.modal-button-text {
 }
 
 .modal-button-text {
-  color: #000;
+  color: #fff;
   background-color: gray;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  padding: 5px;
 }
 
 .discount-button-text {
   color: #fff;
   background-color: green;
+}
+
+.radioHolder {
+  flex-direction: row;
+  display: flex;
+}
+
+li button {
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding: 5px;
 }
 
 @property --tw-space-y-reverse {
