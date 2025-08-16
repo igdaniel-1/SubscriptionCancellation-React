@@ -89,7 +89,7 @@ const Modal: React.FC<ModalProps> = ({
             let currentTitleCount = 17;
             setTitleCounter(currentTitleCount);
             console.log("updated title count: ", titleCounter);
-        }else if (titleCounter==5||titleCounter==9||titleCounter==18||titleCounter==19){
+        }else if (titleCounter==5||titleCounter==9||titleCounter==18||titleCounter==19){ //i may need to change this to 17 and 18, theres an extra page in the no discount flow
             // if user tries to continue past dialogue, the modal closes
             // dialogue close points are at:
             // yes job and completed Imm Lawyer feedback (path 1 - Yes MM),
