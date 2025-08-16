@@ -25,7 +25,8 @@ interface CancellationData{
   monthlyPrice:number,
   downsell_variant:string,
   reason:string,
-  accepted_downsell:string
+  accepted_downsell:string,
+  cancelAtPeriodEnd: boolean,
 }
 
 
