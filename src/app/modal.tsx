@@ -13,32 +13,14 @@ interface ModalProps {
 const Form: React.FC<any> = ({}) => {
     return (
         <form>
-          <label>Label Text Here:
+          {/* <label>Label Text Here: */}
             <input type="text" />
-          </label>
+          {/* </label> */}
         </form>
       )
 }
-const JobQuestions: React.FC<any> = ({}) => {
-    return (
-        <div>
-            <h3>How many roles did you apply for through Migrate Mate?</h3>
-            <button className="modal-button-text">NUMBER INPUT BUTTON</button>
-            <h3>How many companies did you email directly?</h3>
-            <button className="modal-button-text">NUMBER INPUT BUTTON</button>
-            <h3>How many different companies did you interview with?</h3>
-            <button className="modal-button-text">NUMBER INPUT BUTTON</button>
-        </div>
-        
-    )
-}
-const DiscountOffer: React.FC<any> = ({}) => {
-    return (
-        <div>
-            <button className="discount-button-text">Get 50% off</button>
-        </div>
-    )
-}
+
+
 
 
 
@@ -66,6 +48,7 @@ const Modal: React.FC<ModalProps> = ({
     const [hasJob, setHasJob] = useState<boolean>(false);
     const [gotJobThruMM, setGotJobThruMM] = useState<boolean>(false);
     const [hasImmigrationLawyer, setHasImmigrationLawyer] = useState<boolean>(false);
+    const [selectedRadioValue, setSelectedRadioValue] = useState<string>("None");
 
 
     const handleContinueClick = (e) => {
@@ -81,11 +64,24 @@ const Modal: React.FC<ModalProps> = ({
             let currentTitleCount = 11;
             setTitleCounter(currentTitleCount);
             console.log("updated title count: ", titleCounter);
-        }else if (titleCounter==14){
-            // take user from discount no job path to ending page
-            let currentTitleCount = 18;
+        }else if (titleCounter==2 && !gotJobThruMM){
+            // if job was acquired outside the MM Network
+            let currentTitleCount = 7;
             setTitleCounter(currentTitleCount);
             console.log("updated title count: ", titleCounter);
+        }else if (titleCounter==13){
+            // take user from discount and no job path to ending page
+            let currentTitleCount = 17;
+            setTitleCounter(currentTitleCount);
+            console.log("updated title count: ", titleCounter);
+        }else if (titleCounter==5||titleCounter==9||titleCounter==18||titleCounter==19){
+            // if user tries to continue past dialogue, the modal closes
+            // dialogue close points are at:
+            // yes job and completed Imm Lawyer feedback (path 1 - Yes MM),
+            // yes job and completed Imm Lawyer feedback (path 2 - No MM),
+            // no job and no redeem discount, 
+            // and no job plus selected discount 
+            onClose();
         }
         else{
             // set standard page progression logic
@@ -204,6 +200,154 @@ const Modal: React.FC<ModalProps> = ({
         }
         
     }
+    const DiscountOffer: React.FC<any> = ({}) => {
+        return (
+            <div>
+                <button onClick={function handleClick() {
+                            setTitleCounter(18);
+                            console.log("discount set to true");
+                          }}
+                    className="discount-button-text">Get 50% off</button>
+            </div>
+        )
+    }
+    const RadioButtonSingle: React.FC<any> = ({
+        label,
+        // selected,
+        onSelect,
+         }) => {
+        return (
+            <li>
+                <button
+                    onClick={onSelect}
+                >
+                    {label}
+                </button>
+            </li>
+        )
+    }
+    const RadioButtonSelection: React.FC<any> = ({}) => {
+        return (
+            <div>
+                <ul>
+                    <RadioButtonSingle
+                        label="Too expensive"
+                        selected={
+                            selectedRadioValue ===
+                            "Too expensive"
+                        }
+                        onSelect={() =>
+                            setSelectedRadioValue(
+                                "Too expensive"
+                            )
+                        }
+                    />
+                    <RadioButtonSingle
+                        label="Platform not helpful"
+                        selected={
+                            selectedRadioValue ===
+                            "Platform not helpful"
+                        }
+                        onSelect={() =>
+                            setSelectedRadioValue(
+                                "Platform not helpful"
+                            )
+                        }
+                    />
+                    <RadioButtonSingle
+                        label="Not enough relevant jobs"
+                        selected={
+                            selectedRadioValue ===
+                            "Not enough relevant jobs"
+                        }
+                        onSelect={() =>
+                            setSelectedRadioValue(
+                                "Not enough relevant jobs"
+                            )
+                        }
+                    />
+                    <RadioButtonSingle
+                        label="Decided not to move"
+                        selected={
+                            selectedRadioValue ===
+                            "Decided not to move"
+                        }
+                        onSelect={() =>
+                            setSelectedRadioValue(
+                                "Decided not to move"
+                            )
+                        }
+                    />
+                    <RadioButtonSingle
+                        label="Other"
+                        selected={
+                            selectedRadioValue ===
+                            "Other"
+                        }
+                        onSelect={() =>
+                            setSelectedRadioValue(
+                                "Other"
+                            )
+                        }
+                    />
+                </ul>
+            </div>
+        )
+    }
+    const RadioButtonSelectionFollowUp: React.FC<any> = ({}) => {
+        return (
+            <div>
+                <h3>{selectedRadioValue}</h3>
+                <Form></Form>
+            </div>
+        )
+    }
+    const JobQuestions: React.FC<any> = ({}) => {
+        return (
+            <div>
+                <h3>How many roles did you apply for through Migrate Mate?</h3>
+                <RadioButtonSingle
+                    label="0"
+                />
+                <RadioButtonSingle
+                    label="1-5"
+                />
+                <RadioButtonSingle
+                    label="6-20"
+                />
+                <RadioButtonSingle
+                    label="20+"
+                />
+                <h3>How many companies did you email directly?</h3>
+                <RadioButtonSingle
+                    label="0"
+                />
+                <RadioButtonSingle
+                    label="1-5"
+                />
+                <RadioButtonSingle
+                    label="6-20"
+                />
+                <RadioButtonSingle
+                    label="20+"
+                />
+                <h3>How many different companies did you interview with?</h3>
+                <RadioButtonSingle
+                    label="0"
+                />
+                <RadioButtonSingle
+                    label="1-2"
+                />
+                <RadioButtonSingle
+                    label="3-5"
+                />
+                <RadioButtonSingle
+                    label="5+"
+                />
+            </div>
+            
+        )
+    }
 
 
 
@@ -215,23 +359,23 @@ const Modal: React.FC<ModalProps> = ({
         
         // job through MM
         { name: "What's one thing you wish we could've helped you with?", value: [<Form></Form>], key:2 },
-        { name: "We helped you land the job, immigration lawyer?", value: [<ImmigrationLawyer></ImmigrationLawyer>], key:3 },
-        { name: "We helped you land the job, now let’s help you secure your visa.", value: [<ImmigrationLawyerFollowUp></ImmigrationLawyerFollowUp>], key:4 },
+        { name: "We helped you land the job, now let's help you secure your visa.", value: [<ImmigrationLawyer></ImmigrationLawyer>], key:3 },
+        { name: "We helped you land the job, now let's help you secure your visa.", value: [<ImmigrationLawyerFollowUp></ImmigrationLawyerFollowUp>], key:4 },
         // { name: "We helped you land the job, NO immigration lawyer", value: ["input text field", "Continue"], key:5 },
         { name: "All done!", value: ["Close/Continue"], key:6 },
         // job outside MM
         { name: "What's one thing you wish we could've helped you with?", value: [<Form></Form>, "Continue"], key:7 },
-        { name: "You landed the job, immigration lawyer?", value: [<ImmigrationLawyer></ImmigrationLawyer>], key:8 },
-        { name: "You landed the job, YES immigration lawyer", value: ["input text field", "Continue"], key:9 },
-        { name: "You landed the job, NO immigration lawyer", value: ["input text field", "Continue"], key:10},
+        { name: "You landed the job! That's what we live for. Even if it wasn’t through Migrate Mate, let us help get your visa sorted.", value: [<ImmigrationLawyer></ImmigrationLawyer>], key:8 },
+        { name: "You landed the job! That's what we live for. Even if it wasn’t through Migrate Mate, let us help get your visa sorted.", value: [<ImmigrationLawyerFollowUp></ImmigrationLawyerFollowUp>], key:9 },
+        // { name: "You landed the job, NO immigration lawyer", value: ["input text field", "Continue"], key:10},
         { name: "Your cancellation is all sorted, mate, no more changes.", value: ["Close/Continue"], key:11 },
 
         // no job pathway
         // here will be the optional DISCOUNT page
         { key:12, name: "We built this to help you land the job, this makes it a little easier.", value: ["Here's 50% off until you find a job.", "Decline and Continue", <DiscountOffer></DiscountOffer>] },
-        { key:13, name: "Help us understand how you were using Migrate Mate.", value: [<JobQuestions></JobQuestions>, <DiscountOffer></DiscountOffer>, "Continue"] },
-        { key:14, name: "What's the main reason for cancelling?", value: ["5 seperate reasons w radio buttons", <DiscountOffer></DiscountOffer>,"Continue"] },
-        { key:15, name: "What's the main reason for cancelling?", value: ["input text field related to previous reason", <DiscountOffer></DiscountOffer>,"Continue"] },
+        { key:13, name: "Help us understand how you were using Migrate Mate.", value: [<JobQuestions></JobQuestions>, <DiscountOffer></DiscountOffer>] },
+        { key:14, name: "What's the main reason for cancelling?", value: [<RadioButtonSelection></RadioButtonSelection>, <DiscountOffer></DiscountOffer>] },
+        { key:15, name: "What's the main reason for cancelling?", value: [<RadioButtonSelectionFollowUp></RadioButtonSelectionFollowUp>, <DiscountOffer></DiscountOffer>] },
 
         // version with NO discount
         { key:16, name: "Help us understand how you were using Migrate Mate.", value: [<JobQuestions></JobQuestions>, "Continue"] },
@@ -239,18 +383,22 @@ const Modal: React.FC<ModalProps> = ({
         { key:18, name: "What's the main reason for cancelling?", value: ["input text field related to previous reason", "Continue"] },
 
 
-        { key:18, name: "Sorry to see you go", value: ["Close/Continue"] }
+        { key:18, name: "Sorry to see you go", value: ["Close/Continue"] },
+        { key:19, name: "Great choice, mate! You're still on the path to your dream role.", value: ["."] }
     ]
 
     
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+        id="outerModalContainer"
+    //   className="modalContainer"
+    //   "fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
       onClick={handleOverlayClick}
     >
       <div
-        className="p-6 rounded-xl shadow-lg w-96 transition-colors duration-300"
+        id="innerModalContainer"
+        // className="p-6 rounded-xl shadow-lg w-96 transition-colors duration-300"
         // style={{ backgroundColor }}
         onClick={handleModalClick}
       >

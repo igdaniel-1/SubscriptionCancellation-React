@@ -159,3 +159,28 @@ All buttons are continue buttons
 - I have a helper function controlling my onClick to proceed to the next title in the story path. This is not always the case in the demo.
 - I need to create more onClick helper functions to regulate the steps taken through the path.
 - I also need this so users can click the multiple question buttons on some of the pages without the story moving forward preemptively. 
+- Resolved this by using my state variables and some if statements in my Click handler to jump around the story depending on user's answers.
+
+Adding the Offer Accepted page 
+- I need to add a redirect to the accepted page if the user clicks the DiscountOffer button.
+- Made this my modifying the DiscountOffer button code to index the page up to the new accepted page.
+
+Create the 5 radio button structure on the "main reason for cancelling" page
+- Depending on which button is clicked, that button's label is persisted to the next page as the label for the text input box.
+- I need to create a state that will hold onto the problem, then pass that string to the next page.
+- Resolved by building a radio button component. I build another component that housed 5 of those radio button components.
+- When the radio buttons are clicked, the reason for quitting can be updated multiple times until "Continue" is pressed.
+- The subsequent page displays the selected reason for leaving alongside a text input box. 
+
+Break case for Discount Accepted.
+- I added the Discount accepted page to the end of my page-titles array. To keep the modal form breaking if the user tried to continue at this point, I have continue set to execute the onClose function.
+- Down the line, I will look to have the "Continue" button conditionally hidden on some pages.
+
+Redirect to the dialogue path where Migrate Mate didn't help them find the job
+- Jump from the second page to the correct index in my array for the proper dialogue.
+- Reuse the Immigration Lawyer and Immigration Lawyer FollowUp components I developed for the "with help from MM" path.
+
+
+Construct the UI for the reusable JobQuestions component
+- Right now the buttons on this component do nothing when clicked.
+- Changed values for the buttons to reflect the Figma example.

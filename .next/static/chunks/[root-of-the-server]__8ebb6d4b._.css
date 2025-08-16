@@ -918,13 +918,33 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+#outerModalContainer {
+  background-color: gray;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+#innerModalContainer {
+  background-color: #fff;
+  justify-self: center;
+  width: 80%;
+  height: 80%;
+}
+
 .inner-modal-text {
-  color: #fff;
+  color: #000;
+}
+
+button.modal-button-text {
+  border: 3px #000;
 }
 
 .modal-button-text {
-  color: #fff;
-  background-color: purple;
+  color: #000;
+  background-color: gray;
 }
 
 .discount-button-text {

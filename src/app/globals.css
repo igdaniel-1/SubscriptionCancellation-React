@@ -24,13 +24,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+#outerModalContainer{
+  background-color: gray;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  /* z-index: 50;
+  inset: 0;
+  position: fixed;
+  justify-self: center;
+  align-items: center; */
 
+}
+#innerModalContainer{
+  background-color: white;
+  width: 80%;
+  height: 80%;
+  justify-self: center;
+}
 .inner-modal-text {
-  color: white;
+  color: black;
+}
+button.modal-button-text {
+  border: 3px black;
 }
 .modal-button-text{
-  background-color: purple;
-  color: white;
+  background-color: gray;
+  color: black;
 }
 .discount-button-text{
   background-color: green;
