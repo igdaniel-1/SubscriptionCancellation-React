@@ -71,17 +71,31 @@ const Modal: React.FC<ModalProps> = ({
     const handleContinueClick = (e) => {
         e.preventDefault();
         console.log("current title: ", titleCounter);
-        let currentTitleCount = titleCounter;
+        
         // here is where I will manage the state tree 
-        // there need to be jumps in the iteration to progress the story path accurately
-        if (titleCounter==0){
+        // there needs to be jumps in the iteration to progress the story path accurately
+        
+        if (titleCounter==0 && hasJob==false){
+            // take user down no job found path
             console.log("title is at stage 0");
+            let currentTitleCount = 11;
+            setTitleCounter(currentTitleCount);
+            console.log("updated title count: ", titleCounter);
+        }else if (titleCounter==14){
+            // take user from discount no job path to ending page
+            let currentTitleCount = 18;
+            setTitleCounter(currentTitleCount);
+            console.log("updated title count: ", titleCounter);
+        }
+        else{
+            // set standard page progression logic
+            let currentTitleCount = titleCounter;
+            currentTitleCount++;
+            setTitleCounter(currentTitleCount);
+            console.log("updated title count: ", titleCounter);
         }
 
-
-        currentTitleCount++;
-        setTitleCounter(currentTitleCount);
-        console.log("updated title count: ", titleCounter);
+        
 
     
   };

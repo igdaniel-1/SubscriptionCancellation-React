@@ -134,15 +134,26 @@ body, children })=>{
     const handleContinueClick = (e)=>{
         e.preventDefault();
         console.log("current title: ", titleCounter);
-        let currentTitleCount = titleCounter;
         // here is where I will manage the state tree 
-        // there need to be jumps in the iteration to progress the story path accurately
-        if (titleCounter == 0) {
+        // there needs to be jumps in the iteration to progress the story path accurately
+        if (titleCounter == 0 && hasJob == false) {
+            // take user down no job found path
             console.log("title is at stage 0");
+            let currentTitleCount = 11;
+            setTitleCounter(currentTitleCount);
+            console.log("updated title count: ", titleCounter);
+        } else if (titleCounter == 14) {
+            // take user from discount no job path to ending page
+            let currentTitleCount = 18;
+            setTitleCounter(currentTitleCount);
+            console.log("updated title count: ", titleCounter);
+        } else {
+            // set standard page progression logic
+            let currentTitleCount = titleCounter;
+            currentTitleCount++;
+            setTitleCounter(currentTitleCount);
+            console.log("updated title count: ", titleCounter);
         }
-        currentTitleCount++;
-        setTitleCounter(currentTitleCount);
-        console.log("updated title count: ", titleCounter);
     };
     const ButtonList = ({})=>{
         console.log(allTitles[titleCounter].value);
@@ -150,14 +161,14 @@ body, children })=>{
                 children: buttonValue
             }, void 0, false, {
                 fileName: "[project]/src/app/modal.tsx",
-                lineNumber: 91,
+                lineNumber: 105,
                 columnNumber: 13
             }, this));
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
             children: listItems
         }, void 0, false, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 95,
+            lineNumber: 109,
             columnNumber: 13
         }, this);
     };
@@ -170,7 +181,7 @@ body, children })=>{
                     children: "Whatever your answer, we just want to help you take the next step. With visa support, or by hearing how we can do better."
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 104,
+                    lineNumber: 118,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -182,7 +193,7 @@ body, children })=>{
                     children: "Yes"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 105,
+                    lineNumber: 119,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -194,13 +205,13 @@ body, children })=>{
                     children: "No"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 113,
+                    lineNumber: 127,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 103,
+            lineNumber: 117,
             columnNumber: 13
         }, this);
     };
@@ -212,7 +223,7 @@ body, children })=>{
                     children: "Did you find this role through Migrate Mate?"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 128,
+                    lineNumber: 142,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -224,7 +235,7 @@ body, children })=>{
                     children: "Yes"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 129,
+                    lineNumber: 143,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -236,13 +247,13 @@ body, children })=>{
                     children: "No"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 137,
+                    lineNumber: 151,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 127,
+            lineNumber: 141,
             columnNumber: 13
         }, this);
     };
@@ -254,7 +265,7 @@ body, children })=>{
                     children: "Is your company providing an immigration lawyer to help with your visa?"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 152,
+                    lineNumber: 166,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -266,7 +277,7 @@ body, children })=>{
                     children: "Yes"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 153,
+                    lineNumber: 167,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -278,13 +289,13 @@ body, children })=>{
                     children: "No"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 161,
+                    lineNumber: 175,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 151,
+            lineNumber: 165,
             columnNumber: 13
         }, this);
     };
@@ -297,18 +308,18 @@ body, children })=>{
                         children: "What visa will you be applying for?"
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 177,
+                        lineNumber: 191,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Form, {}, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 178,
+                        lineNumber: 192,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/modal.tsx",
-                lineNumber: 176,
+                lineNumber: 190,
                 columnNumber: 17
             }, this);
         } else {
@@ -319,25 +330,25 @@ body, children })=>{
                         children: "We can connect you with one of our trusted partners."
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 185,
+                        lineNumber: 199,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                         children: "Which visa would you like to apply for?"
                     }, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 186,
+                        lineNumber: 200,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Form, {}, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 187,
+                        lineNumber: 201,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/modal.tsx",
-                lineNumber: 184,
+                lineNumber: 198,
                 columnNumber: 17
             }, this);
         }
@@ -349,7 +360,7 @@ body, children })=>{
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(FoundJob, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 198,
+                    lineNumber: 212,
                     columnNumber: 89
                 }, this)
             ],
@@ -361,12 +372,12 @@ body, children })=>{
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(FoundThroughMM, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 200,
+                    lineNumber: 214,
                     columnNumber: 54
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(JobQuestions, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 200,
+                    lineNumber: 214,
                     columnNumber: 89
                 }, this)
             ],
@@ -378,7 +389,7 @@ body, children })=>{
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Form, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 203,
+                    lineNumber: 217,
                     columnNumber: 83
                 }, this)
             ],
@@ -389,7 +400,7 @@ body, children })=>{
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ImmigrationLawyer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 204,
+                    lineNumber: 218,
                     columnNumber: 76
                 }, this)
             ],
@@ -400,7 +411,7 @@ body, children })=>{
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ImmigrationLawyerFollowUp, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 205,
+                    lineNumber: 219,
                     columnNumber: 93
                 }, this)
             ],
@@ -420,7 +431,7 @@ body, children })=>{
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Form, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 209,
+                    lineNumber: 223,
                     columnNumber: 83
                 }, this),
                 "Continue"
@@ -432,7 +443,7 @@ body, children })=>{
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ImmigrationLawyer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 210,
+                    lineNumber: 224,
                     columnNumber: 68
                 }, this)
             ],
@@ -471,7 +482,7 @@ body, children })=>{
                 "Decline and Continue",
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(DiscountOffer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 217,
+                    lineNumber: 231,
                     columnNumber: 171
                 }, this)
             ]
@@ -482,12 +493,12 @@ body, children })=>{
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(JobQuestions, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 218,
+                    lineNumber: 232,
                     columnNumber: 88
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(DiscountOffer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 218,
+                    lineNumber: 232,
                     columnNumber: 119
                 }, this),
                 "Continue"
@@ -500,7 +511,7 @@ body, children })=>{
                 "5 seperate reasons w radio buttons",
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(DiscountOffer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 219,
+                    lineNumber: 233,
                     columnNumber: 113
                 }, this),
                 "Continue"
@@ -513,7 +524,7 @@ body, children })=>{
                 "input text field related to previous reason",
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(DiscountOffer, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 220,
+                    lineNumber: 234,
                     columnNumber: 122
                 }, this),
                 "Continue"
@@ -526,7 +537,7 @@ body, children })=>{
             value: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(JobQuestions, {}, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 223,
+                    lineNumber: 237,
                     columnNumber: 88
                 }, this),
                 "Continue"
@@ -568,19 +579,19 @@ body, children })=>{
                     children: allTitles[titleCounter].name
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 243,
+                    lineNumber: 257,
                     columnNumber: 37
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "inner-modal-text",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ButtonList, {}, void 0, false, {
                         fileName: "[project]/src/app/modal.tsx",
-                        lineNumber: 246,
+                        lineNumber: 260,
                         columnNumber: 43
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 246,
+                    lineNumber: 260,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -592,7 +603,7 @@ body, children })=>{
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 250,
+                    lineNumber: 264,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -601,18 +612,18 @@ body, children })=>{
                     children: "Close"
                 }, void 0, false, {
                     fileName: "[project]/src/app/modal.tsx",
-                    lineNumber: 257,
+                    lineNumber: 271,
                     columnNumber: 13
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/modal.tsx",
-            lineNumber: 238,
+            lineNumber: 252,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/modal.tsx",
-        lineNumber: 234,
+        lineNumber: 248,
         columnNumber: 5
     }, this);
 };
