@@ -20,6 +20,12 @@ const Form: React.FC<any> = ({}) => {
       )
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 
 
@@ -61,8 +67,17 @@ const Modal: React.FC<ModalProps> = ({
         if (titleCounter==0 && hasJob==false){
             // take user down no job found path
             console.log("title is at stage 0");
-            let currentTitleCount = 11;
-            setTitleCounter(currentTitleCount);
+            let choice = getRandomInt(1,2);
+            // there's a 50% chance the page is redirected to the discount page, page 11
+            if (choice == 1){
+                let currentTitleCount = 11;
+                setTitleCounter(currentTitleCount);
+            }
+            // there's a 50% chance the page is redirected to the NON discount page, page 14
+            if (choice == 2){
+                let currentTitleCount = 14;
+                setTitleCounter(currentTitleCount);
+            }
             console.log("updated title count: ", titleCounter);
         }else if (titleCounter==2 && !gotJobThruMM){
             // if job was acquired outside the MM Network
@@ -378,9 +393,9 @@ const Modal: React.FC<ModalProps> = ({
         { key:15, name: "What's the main reason for cancelling?", value: [<RadioButtonSelectionFollowUp></RadioButtonSelectionFollowUp>, <DiscountOffer></DiscountOffer>] },
 
         // version with NO discount
-        { key:16, name: "Help us understand how you were using Migrate Mate.", value: [<JobQuestions></JobQuestions>, "Continue"] },
-        { key:17, name: "What's the main reason for cancelling?", value: ["5 seperate reasons w radio buttons"] },
-        { key:18, name: "What's the main reason for cancelling?", value: ["input text field related to previous reason", "Continue"] },
+        { key:16, name: "Help us understand how you were using Migrate Mate.", value: [<JobQuestions></JobQuestions>] },
+        { key:17, name: "What's the main reason for cancelling?", value: [<RadioButtonSelection></RadioButtonSelection>] },
+        { key:18, name: "What's the main reason for cancelling?", value: [<RadioButtonSelectionFollowUp></RadioButtonSelectionFollowUp>] },
 
 
         { key:18, name: "Sorry to see you go", value: ["Close/Continue"] },
